@@ -12,9 +12,9 @@ done
 
 for f in dot.*; do
     g=`echo $f | sed -e 's/^dot//'`;
-    echo "  mv $f ~/$g";
+    echo "  cp $f ~/$g";
     if [ "$simulate" == 0 ]
     then
-        mv $f ~/$g;
+        cp $f ~/$g;
     fi
 done
