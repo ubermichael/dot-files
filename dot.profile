@@ -9,6 +9,15 @@ then
     function con () {
         open -a Console $@;
     }
+#make cocoon happy
+    export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`
+
+#try to make java happy
+    export CLASSPATH=
+    for JAR in ~/Classes/*.jar; do
+        export CLASSPATH=$CLASSPATH:$JAR
+    done
+
 else
 	export PAGER=less
 	export EDITOR='/usr/bin/emacs -nw'	
@@ -67,15 +76,6 @@ shopt -s cdspell
 #things to make perl happy
 export LC_ALL=C
 export LANG="en_CA"
-
-#make cocoon happy
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`
-
-#try to make java happy
-export CLASSPATH=
-for JAR in ~/Classes/*.jar; do
-    export CLASSPATH=$CLASSPATH:$JAR
-done
 
 # make bash tab compeletion not suck.
 export FIGNORE=CVS
