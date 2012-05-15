@@ -1,0 +1,11 @@
+[mysqldump]
+add-drop-database
+add-drop-table
+comments
+complete-insert
+dump-date
+lock-all-tables
+order-by-primary
+
+[mysql]
+prompt=[\\r:\m:\\s][\u@\h] \d >
