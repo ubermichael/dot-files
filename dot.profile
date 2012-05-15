@@ -1,4 +1,4 @@
-#!/bin/sh  -*- shell-script -*-
+#!/bin/bash  -*- shell-script -*-
 
 # turn of ^S/^Q to suspend/resume the term
 stty -ixon
