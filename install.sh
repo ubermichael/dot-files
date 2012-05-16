@@ -18,3 +18,15 @@ for f in dot.*; do
         cp $f ~/$g;
     fi
 done
+
+uname=`uname | tr '[:upper:]' '[:lower:]'`;
+if [ -e defaults.${uname}.sh ]
+then
+    echo "  defaults.${uname}.sh";
+    if [ "$simulate" == 0 ]
+    then
+        . defaults.${uname}.sh;
+    fi
+else
+    echo "warning: no os specific defaults for ${uname}";
+fi
