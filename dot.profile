@@ -28,10 +28,9 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 shopt -s histappend
 shopt -s cmdhist
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=20000
-export HISTSIZE=20000
-export SAVEHIST=40000
-export HISTTIMEFORMAT='%F %T'
+export HISTFILESIZE=200000
+export HISTSIZE=200000
+export SAVEHIST=400000
 export HISTIGNORE='ls:bg:fg:history:ps'
 export PROMPT_COMMEND='history -a; history -n'
 
@@ -120,6 +119,14 @@ function exist-backup () {
     mkdir -p $DIR
     JAVA_OPTIONS=-Xmx256M $CLI -d $DIR -u $USER -ouri=$URI -b /db
 }
+
+# grepperies. Must come after all uses of grep because Darwin
+# grep doesn't do --exclude-dir. 
+GREP_OPTIONS="--color -P -i -n -H"
+for p in .cvs '.git*' .hg .svn; do
+    GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$p"
+done
+export GREP_OPTIONS
 
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
 if [ -e ~/.profile.${uname} ]

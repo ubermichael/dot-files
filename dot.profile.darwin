@@ -36,6 +36,7 @@ alias saxon-compile='java net.sf.saxon.Compile '
 alias saxon='java -jar ~/Classes/saxon9he.jar '
 alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
 alias ncftp='EDITOR=/usr/bin/emacs ncftp '
+alias grep='/opt/local/bin/grep '
 
 EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
 
