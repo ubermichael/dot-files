@@ -140,5 +140,8 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 # Reset Launchpad
 [ -e ~/Library/Application\ Support/Dock/*.db ] && rm ~/Library/Application\ Support/Dock/*.db
 
+# Hide .plist.lockfile in the Finder. They're useless anyway.
+chflags hidden /Library/Preferences/*.plist.lockfile
+
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
