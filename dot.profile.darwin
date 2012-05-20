@@ -1,11 +1,13 @@
 #!/bin/sh  -*- shell-script -*-
 
 export PAGER=aless	
-export EDITOR='open -a Emacs '
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs '
 
 function con () {
     open -a Console $@;
+}
+
+function emacs () {
+    nohup /Applications/Emacs.app/Contents/MacOS/Emacs $@ & 2>&1 > /dev/null
 }
 
 # get some dyna-loader happyness

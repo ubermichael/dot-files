@@ -48,8 +48,8 @@ export FIGNORE=$FIGNORE:.o
 export FIGNORE=$FIGNORE:.svn 
 
 # make vc not suck.
-export SVN_EDITOR=/usr/bin/emacs
-export GIT_EDITOR=/usr/bin/emacs
+export SVN_EDITOR=emacs
+export GIT_EDITOR=emacs
 . ~/.git-completion
 
 #nifty aliases
@@ -59,6 +59,7 @@ alias j='jobs'
 alias l='ls -lFh'
 alias la='ls -alFh'
 alias path='echo $PATH | perl -ple "s/:/\n/g"'
+alias mysql='mysql --safe-updates'
 
 #  ------------------------------------- 
 # trying out command completion with ssh host<TAB>
