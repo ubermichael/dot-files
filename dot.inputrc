@@ -1,3 +1,9 @@
 set show-all-if-ambiguous on
 set completion-ignore-case on
 set completion-map-case on
+
+# these allow you to use ctrl+left/right arrow keys
+# to jump the cursor over words
+# i don't seem to need these.
+# "\e[5C": forward-word
+# "\e[5D": backward-word
