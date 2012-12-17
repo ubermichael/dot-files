@@ -3,26 +3,41 @@
 	email = ubermichael@gmail.com
         
 [core]
-	excludesfile = /Users/michael/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-        
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-        
 [github]
 	user = ubermichael
 	token = 958fae35fd18a0c9263fa9a8d42f9c49
         
 [color]
+        ui = auto
 	diff = auto
 	status = auto
 	branch = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[merge]
+        # Include summaries of merged commits in newly created merge
+        # commit messages
+        log = true
         
 [alias]
     st = status
     ci = commit
+    l = log --oneline
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
     
