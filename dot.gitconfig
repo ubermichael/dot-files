@@ -1,21 +1,27 @@
 [user]
 	name = Michael Joyce
 	email = ubermichael@gmail.com
+        
 [core]
 	excludesfile = /Users/michael/.gitignore_global
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
+        
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+        
 [github]
 	user = ubermichael
 	token = 958fae35fd18a0c9263fa9a8d42f9c49
+        
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+        
 [alias]
     st = status
     ci = commit

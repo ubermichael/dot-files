@@ -45,7 +45,8 @@ export LANG="en_CA"
 export FIGNORE=CVS
 export FIGNORE=$FIGNORE:\~
 export FIGNORE=$FIGNORE:.o
-export FIGNORE=$FIGNORE:.svn 
+export FIGNORE=$FIGNORE:.svn
+export FIGNORE=$FIGNORE:.git
 
 # make vc not suck.
 export SVN_EDITOR=emacs
@@ -60,6 +61,12 @@ alias l='ls -lFh'
 alias la='ls -alFh'
 alias path='echo $PATH | perl -ple "s/:/\n/g"'
 alias mysql='mysql --safe-updates'
+alias wget='wget --user-agent="Mozilla" -c'
+alias bash-reload='source ~/.profile'
+alias ipaddress='curl ifconfig.me'
+
+# turn on grep coloring.
+export GREP_OPTIONS="--color=auto"
 
 #  ------------------------------------- 
 # trying out command completion with ssh host<TAB>
@@ -69,30 +76,6 @@ complete -c -f command sudo
 
 function critic() {
     perlcritic -4 . | perl -ple 's/^([^:]*): (.*? at line (\d+), column (\d+))/$1:$3:$4: $2/' > critic.log
-}
-
-function svn-revs () {
-    for filename in $@; do
-        for rev in `svn log $filename | grep  -E '^r[0-9]+' | sed -e 's/ | .*//'`; do
-            echo  ${filename}.${rev}
-            svn cat -${rev} ${filename} > ${filename}.${rev}
-        done
-    done
-}
-
-function svn-add() {
-    svn st | grep '?' | sed -e 's/^?//' | xargs svn add
-}
-
-function svn-add() {
-    svn st | grep '!' | sed -e 's/^!//' | xargs svn add
-}
-
-function svn-tag() {
-  tag="$1";
-  ver=`svnversion`;
-  root=`svn info | grep 'Repository Root: ' | sed -e 's/Repository Root: //'`;
-  svn cp $root/trunk $root/tags/$tag-r$ver -m "tagging $tag-$ver";
 }
 
 EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
@@ -120,14 +103,6 @@ function exist-backup () {
     mkdir -p $DIR
     JAVA_OPTIONS=-Xmx256M $CLI -d $DIR -u $USER -ouri=$URI -b /db
 }
-
-# grepperies. Must come after all uses of grep because Darwin
-# grep doesn't do --exclude-dir. 
-GREP_OPTIONS="--color -P -i -n -H"
-for p in .cvs '.git*' .hg .svn; do
-    GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$p"
-done
-export GREP_OPTIONS
 
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
 if [ -e ~/.profile.${uname} ]

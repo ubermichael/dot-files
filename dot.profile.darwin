@@ -7,7 +7,7 @@ function con () {
 }
 
 function emacs () {
-    nohup /Applications/Emacs.app/Contents/MacOS/Emacs $@ & 2>&1 > /dev/null
+    nohup /Applications/Emacs.app/Contents/MacOS/Emacs $@ 2>&1 > /dev/null &
 }
 
 # get some dyna-loader happyness

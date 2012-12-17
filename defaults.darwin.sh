@@ -1,9 +1,32 @@
+#!/bin/sh
+
+# make sure we're running as root
+if (( `/usr/bin/id -u` != 0 ));
+then {
+        $ECHO "Sorry, must be root.  Exiting..."
+        exit;
+    }
+fi
+
+
+# Set computer name (as done via System Preferences → Sharing)
+scutil --set ComputerName "bernard"
+scutil --set HostName "bernard"
+scutil --set LocalHostName "bernard"
+defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "bernard"
+
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 # Show remaining battery time; hide percentage
 # defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 # defaults write com.apple.menuextra.battery ShowTime -string "YES"
+
+# Menu bar: hide the useless Time Machine and Volume icons
+defaults write com.apple.systemuiserver menuExtras -array \
+        "/System/Library/CoreServices/Menu Extras/Sync.menu" \
+        "/System/Library/CoreServices/Menu Extras/TextInput.menu" \
+        "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -34,7 +57,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Disable auto-correct
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Enable tap to click (Trackpad) for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -145,3 +168,6 @@ sudo chflags hidden /Library/Preferences/*.plist.lockfile
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Change the default save location to On My Mac instead of The Cloud
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false 
