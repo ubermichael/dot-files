@@ -7,3 +7,6 @@ set completion-map-case on
 # i don't seem to need these.
 # "\e[5C": forward-word
 # "\e[5D": backward-word
+
+# Under Terminal > Window Settings > Keyboard you can check "Use
+# option key as meta key."
