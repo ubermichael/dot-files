@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# #get that damn path thingy set up nicely.
+export PATH=/usr/local/bin
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/local/pgsql/bin
+export PATH=$PATH:/Users/michael/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/sbin
+export PATH=$PATH:/usr/local/git/bin
+export PATH=$PATH:/usr/X11/bin
+export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:/opt/local/sbin
+
+#command line
+export PS1="\[\e[0;33m\][\t][\u@\h \W]$\[\e[0m\] "
+
+#turn on colour ls
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+
+# Make vim the default editor
+export EDITOR="/usr/bin/emacs"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTCONTROL=ignoreboth
+export HISTFILESIZE=200000
+export HISTSIZE=200000
+export SAVEHIST=400000
+export HISTCONTROL=ignoredups
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date:* --help"
+
+# make the history file update after every command,
+# not just when the shell closes.
+export PROMPT_COMMEND='history -a; history -n'
+
+# localizations
+# things to make perl happy
+export LC_ALL=C
+export LANG="en_CA"
+
+# make bash tab compeletion not suck.
+export FIGNORE=CVS
+export FIGNORE=$FIGNORE:\~
+export FIGNORE=$FIGNORE:.o
+export FIGNORE=$FIGNORE:.svn
+export FIGNORE=$FIGNORE:.git
+
+# make vc not suck.
+export SVN_EDITOR=emacs
+export GIT_EDITOR=emacs
+
+# turn on grep coloring.
+export GREP_OPTIONS="--color=auto"
