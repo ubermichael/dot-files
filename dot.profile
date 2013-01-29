@@ -35,6 +35,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
+# If possible, add git tab competion for oodles of git things.
+[ -f ~/.git-completion ] && source ~/.git-completion
 
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
 if [ -e ~/.profile.${uname} ]
