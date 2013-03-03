@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# eXist-db
+alias exist-ctrl='sudo /Library/StartupItems/eXist/eXist '
+
 # perl
 alias cpan='sudo env FTP_PASSIVE=1 perl -MCPAN -e "shell"'
 
