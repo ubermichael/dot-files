@@ -42,17 +42,19 @@ alias grep='/opt/local/bin/grep '
 
 EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
 
+EXIST_PATH=/Applications/eXist-db
+
 function exist-client () {
     URI=$EXIST_URI
     USER=admin
-    CLI=/Applications/eXist/bin/client.sh 
+    CLI=$EXIST_PATH/bin/client.sh 
     
     JAVA_OPTIONS=-Xmx256M $CLI -ouri=$URI -u admin -s
 }
 function exist-app () {
     URI=$EXIST_URI
     USER=admin
-    CLI=/Applications/eXist/bin/client.sh 
+    CLI=$EXIST_PATH/bin/client.sh 
     
     JAVA_OPTIONS=-Xmx256MM $CLI -ouri=$URI -u admin
 }
@@ -60,7 +62,7 @@ function exist-backup () {
     URI=$EXIST_URI
     DIR=~michael/cocoon/exist-backup
     USER=admin
-    CLI=/Applications/eXist/bin/backup.sh 
+    CLI=$EXIST_PATH/bin/backup.sh 
 
     mkdir -p $DIR
     JAVA_OPTIONS=-Xmx256M $CLI -d $DIR -u $USER -ouri=$URI -b /db

@@ -24,42 +24,6 @@ function perltidy() {
     find . -type f -name "*.bak" -print -exec rm '{}' \;
 }
 
-EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
-
-# open an eXist client in the command line
-function exist-client () {
-    URI=$EXIST_URI
-    USER=admin
-    CLI=/Applications/eXist/bin/client.sh 
-    
-    JAVA_OPTIONS=-Xmx256M $CLI -ouri=$URI -u admin -s
-}
-
-# open an eXist client in the GUI
-function exist-app () {
-    URI=$EXIST_URI
-    USER=admin
-    CLI=/Applications/eXist/bin/client.sh 
-    
-    JAVA_OPTIONS=-Xmx256MM $CLI -ouri=$URI -u admin
-}
-
-# backup the eXist install.
-function exist-backup () {
-    URI=$EXIST_URI
-    DIR=~michael/cocoon/exist-backup
-    USER=admin
-    CLI=/Applications/eXist/bin/backup.sh 
-
-    mkdir -p $DIR
-    JAVA_OPTIONS=-Xmx256M $CLI -d $DIR -u $USER -ouri=$URI -b /db
-}
-
-# Create a new directory and enter it
-function mkd() {
-    mkdir -p "$@" && cd "$@"
-}
-
 # Determine size of a file or total size of a directory
 function fs() {
     if du -b /dev/null > /dev/null 2>&1; then
