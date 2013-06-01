@@ -9,5 +9,3 @@ gui="$gui transmission-gtk"
 
 dev=""
 dev="$dev "
-
-

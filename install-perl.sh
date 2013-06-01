@@ -1,4 +1,15 @@
+
+
+
 #!/bin/sh
+
+# make sure we're running as root
+if (( `/usr/bin/id -u` != 0 ));
+then {
+        $ECHO "Sorry, must be root.  Exiting..."
+        exit;
+    }
+fi
 
 mods=""
 mods="$mods Bundle::CPAN"
@@ -30,5 +41,5 @@ mods="$mods XML::LibXML"
 
 for m in $mods; do
     echo $m
-    sudo cpan $m
+    cpan $m
 done
