@@ -21,12 +21,11 @@ export PS1="\[\e[0;33m\][\t][\u@\h \W]$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
-
-# Make vim the default editor
+# Make emacs the default editor
 export EDITOR="/usr/bin/emacs"
 
 # Don’t clear the screen after quitting a manual page
-export MANPAGER="less -X"
+export MANPAGER="aless"
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
@@ -63,3 +62,6 @@ export GIT_EDITOR=emacs
 
 # turn on grep coloring.
 export GREP_OPTIONS="--color=auto"
+
+# Setup perlbrew.
+export PERLBREW_ROOT=/opt/perl5

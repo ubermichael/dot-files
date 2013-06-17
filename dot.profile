@@ -45,3 +45,16 @@ then
 else
     echo "warning: no os specific profile for ${uname}";
 fi
+
+# get perlbrew going             
+
+if [ -e /opt/perl5/etc/bashrc ]
+then
+    source /opt/perl5/etc/bashrc
+fi
+
+if [ -e /opt/perl5/etc/perlbrew-completion.bash ]
+then
+    source /opt/perl5/etc/perlbrew-completion.bash
+fi
+
