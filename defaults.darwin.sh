@@ -10,13 +10,13 @@ then {
     }
 fi
 
-COMPY_NAME='bernard'
+COMPY_NAME='carl'
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "bernard"
-sudo scutil --set HostName "bernard"
-sudo scutil --set LocalHostName "bernard"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "bernard"
+sudo scutil --set ComputerName "$COMPY_NAME"
+sudo scutil --set HostName "$COMPY_NAME"
+sudo scutil --set LocalHostName "$COMPY_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPY_NAME"
 
 # Menu bar: disable transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
