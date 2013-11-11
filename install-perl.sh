@@ -1,6 +1,3 @@
-
-
-
 #!/bin/sh
 
 # make sure we're running as root

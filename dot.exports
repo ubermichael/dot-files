@@ -62,7 +62,7 @@ export GIT_EDITOR=emacs
 
 # turn on grep coloring.
 export GREP_OPTIONS=""
-export GREP_OPTIONS="$GREP_OPTIONS --color=always"
+export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
 export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 
@@ -71,5 +71,3 @@ export LESS=""
 export LESS="$LESS -S"
 export LESS="$LESS -R"
 
-# Setup perlbrew.
-export PERLBREW_ROOT=/opt/perl5
