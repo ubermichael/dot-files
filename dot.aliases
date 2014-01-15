@@ -12,8 +12,6 @@ alias path='echo $PATH | perl -ple "s/:/\n/g"'
 alias j='jobs'
 alias bash-reload='source ~/.profile'
 
-alias mysql='mysql --safe-updates'
-
 # url
 alias wget='wget --user-agent="Mozilla" -c'
 
@@ -60,9 +58,6 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
