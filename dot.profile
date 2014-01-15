@@ -50,11 +50,8 @@ fi
 
 if [ -e /opt/perl5/etc/bashrc ]
 then
+    export PERLBREW_ROOT=/opt/perl5
     source /opt/perl5/etc/bashrc
-fi
-
-if [ -e /opt/perl5/etc/perlbrew-completion.bash ]
-then
     source /opt/perl5/etc/perlbrew-completion.bash
 fi
 

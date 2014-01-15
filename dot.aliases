@@ -3,9 +3,6 @@
 # eXist-db
 alias exist-ctrl='sudo /Library/StartupItems/eXist/eXist '
 
-# perl
-alias cpan='sudo env FTP_PASSIVE=1 perl -MCPAN -e "shell"'
-
 # unixy stuff
 alias env='env | sort'
 alias path='echo $PATH | perl -ple "s/:/\n/g"'
@@ -13,10 +10,10 @@ alias j='jobs'
 alias bash-reload='source ~/.profile'
 
 # url
-alias wget='wget --user-agent="Mozilla" -c'
+alias wget='wget --user-agent="Mozilla" -c --no-check-certificates '
 
 # Gzip-enabled `curl`
-alias gurl="curl --compressed"
+alias gurl="curl --compressed "
 
 # IP addresses
 alias ipaddress='curl ifconfig.me'
