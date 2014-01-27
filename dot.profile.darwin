@@ -12,6 +12,8 @@ function emacs () {
 
 # get some dyna-loader happyness
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/pgsql/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/pgsql/lib
 
 # #get the manpath set right
@@ -32,13 +34,16 @@ export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true
 
 # useful aliases
-alias rmds='find . -name ".DS_Store" -print -exec rm \{} \;'
-alias rmlc='find . -name ".localized" -print -exec rm \{} \;'
+alias rmds='find . -name ".DS_Store" -print -delete'
+alias rmlc='find . -name ".localized" -print -delete'
 alias saxon-compile='java net.sf.saxon.Compile '
 alias saxon='java -jar ~/Classes/saxon9he.jar '
 alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
 alias ncftp='EDITOR=/usr/bin/emacs ncftp '
 alias grep='/opt/local/bin/grep '
+
+alias ..='cd ..'
+
 
 EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
 
