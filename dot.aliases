@@ -10,7 +10,7 @@ alias j='jobs'
 alias bash-reload='source ~/.profile'
 
 # url
-alias wget='wget --user-agent="Mozilla" -c --no-check-certificates '
+alias wget='wget --user-agent="Mozilla" -c --no-check-certificate '
 
 # Gzip-enabled `curl`
 alias gurl="curl --compressed "
