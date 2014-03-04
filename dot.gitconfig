@@ -42,3 +42,5 @@
     branches = branch -a
     remotes = remote -v
     
+[push]
+	default = simple
