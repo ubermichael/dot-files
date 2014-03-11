@@ -4,7 +4,6 @@ add-drop-table
 comments
 complete-insert
 dump-date
-lock-all-tables
 order-by-primary
 
 [mysql]
