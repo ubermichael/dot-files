@@ -74,3 +74,5 @@ export LESS=""
 export LESS="$LESS -S"
 export LESS="$LESS -R"
 
+# Make rsync a little better.
+export RSYNC_RSH=ssh
