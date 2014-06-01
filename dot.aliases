@@ -67,7 +67,7 @@ alias map="xargs -n1"
 
 # get Antlr working.
 alias antlr4="java -jar $HOME/Classes/antlr-4.2.2-complete.jar "
-alias grun="java -cp ~/Classes/antlr-4.2.2-complete.jar org.antlr.v4.runtime.misc.TestRig"
+alias grun="java org.antlr.v4.runtime.misc.TestRig "
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
