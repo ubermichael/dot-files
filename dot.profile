@@ -9,6 +9,9 @@ unset file
 # turn off ^S/^Q to suspend/resume the term
 stty -ixon
 
+# Help bash autocomplete filenames starting with dots
+shopt -s dotglob
+
 #HISTORY niceityies.
 shopt -s histappend
 shopt -s cmdhist

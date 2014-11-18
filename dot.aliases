@@ -5,7 +5,7 @@ alias exist-ctrl='sudo /Library/StartupItems/eXist/eXist '
 
 # unixy stuff
 alias env='env | sort'
-alias path='echo $PATH | perl -ple "s/:/\n/g"'
+alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
 alias bash-reload='source ~/.profile'
 
