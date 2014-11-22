@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cmd=`basename $0`;
+hostname=$1;
 simulate=0;
 
 while getopts "n" options; do
@@ -25,7 +26,7 @@ then
     echo "  defaults.${uname}.sh";
     if [ "$simulate" == 0 ]
     then
-        . defaults.${uname}.sh;
+        . defaults.${uname}.sh $hostname;
     fi
 else
     echo "warning: no os specific defaults for ${uname}";

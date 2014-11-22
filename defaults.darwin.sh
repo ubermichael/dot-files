@@ -10,7 +10,8 @@ then {
     }
 fi
 
-COMPY_NAME='henry'
+COMPY_NAME=$1
+echo "installing as $COMPY_NAME";
 
 # Set computer name (as done via System Preferences → Sharing)
 sudo scutil --set ComputerName "$COMPY_NAME"
