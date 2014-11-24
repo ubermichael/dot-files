@@ -18,6 +18,12 @@ sudo scutil --set HostName "$COMPY_NAME"
 sudo scutil --set LocalHostName "$COMPY_NAME"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPY_NAME"
 
+# enable press and hold fpr accented chars.
+# http://support.apple.com/kb/ph11264
+# http://apple.stackexchange.com/questions/105098
+defaults write -g ApplePressAndHoldEnabled -bool true
+defaults write com.apple.terminal ApplePressAndHoldEnabled -bool true
+
 # don't reopen windows logging back in
 defaults write com.apple.loginwindow TALLogoutSavesState 0
 
