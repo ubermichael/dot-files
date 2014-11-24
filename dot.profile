@@ -51,10 +51,9 @@ fi
 
 # get perlbrew going             
 
-if [ -e /opt/perl5/etc/bashrc ]
+if [ -e /opt/perl/etc/bashrc ]
 then
-    export PERLBREW_ROOT=/opt/perl5
-    source /opt/perl5/etc/bashrc
-    source /opt/perl5/etc/perlbrew-completion.bash
+    export PERLBREW_ROOT=/opt/perl
+    source /opt/perl/etc/bashrc
+    source /opt/perl/etc/perlbrew-completion.bash
 fi
-
