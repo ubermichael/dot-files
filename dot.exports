@@ -77,7 +77,6 @@ export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 export LESS=""
 export LESS="$LESS -S"
 export LESS="$LESS -R"
-export LESS="$LESS -F"
 
 # Make rsync a little better.
 export RSYNC_RSH=ssh
