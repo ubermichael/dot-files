@@ -52,3 +52,7 @@
     
 [push]
 	default = simple
+
+[git-up "fetch"]
+	all = true
+        
