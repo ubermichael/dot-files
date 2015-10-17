@@ -73,3 +73,5 @@ alias grun="java org.antlr.v4.runtime.misc.TestRig "
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
+
+alias altbeans='open -n /Applications/NetBeans/NetBeans\ 8.0.1.app --args --userdir ~/Library/Application\ Support/NetBeans.alt'
