@@ -7,7 +7,13 @@ function con () {
 }
 
 function emacs () {
-    nohup /Applications/Emacs.app/Contents/MacOS/Emacs $@ 2>&1 > /dev/null &
+    for f in "$@";
+    do
+        if [ ! -f "$f" ]; then
+            touch "$f";
+        fi        
+    done
+    open -a Emacs "$@"
 }
 
 # get some dyna-loader happyness
