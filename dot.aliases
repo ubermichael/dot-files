@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# eXist-db
-alias exist-ctrl='sudo /Library/StartupItems/eXist/eXist '
-
 # unixy stuff
 alias env='env | sort'
+alias genv='env | grep '
 alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
 alias bash-reload='source ~/.profile'
@@ -74,4 +72,8 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
 
-alias altbeans='open -n /Applications/NetBeans/NetBeans\ 8.0.1.app --args --userdir ~/Library/Application\ Support/NetBeans.alt'
+# open a second netbeans instance.
+alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.0.2.app" --args --userdir ~/Library/Application\ Support/NetBeans.alt'
+
+# grep with auto coloring and excluded svn, git, cvs dirs
+alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.git '

@@ -6,6 +6,16 @@ for file in ~/.{exports,aliases,functions}; do
 done
 unset file
 
+#  ------------------------------------- 
+setjdk 1.7
+
+#  ------------------------------------- 
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+#  ------------------------------------- 
+
 # turn off ^S/^Q to suspend/resume the term
 stty -ixon
 
@@ -22,9 +32,14 @@ shopt -s cdspell
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
 #  ------------------------------------- 
 # command completion with ssh host<TAB>
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" scp
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ping
 complete -c -f command sudo
 
@@ -41,6 +56,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # If possible, add git tab competion for oodles of git things.
 [ -f ~/.git-completion ] && source ~/.git-completion
 
+#  ------------------------------------- 
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
 if [ -e ~/.profile.${uname} ]
 then

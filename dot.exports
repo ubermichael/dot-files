@@ -46,7 +46,7 @@ export SAVEHIST=400000
 export HISTCONTROL=ignoredups
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date:* --help"
+export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date"
 
 # make the history file update after every command,
 # not just when the shell closes.
@@ -54,7 +54,7 @@ export PROMPT_COMMEND='history -a; history -n'
 
 # localizations
 # things to make perl happy
-export LC_ALL=C
+export LC_ALL=en_US.UTF-8
 export LANG="en_CA"
 
 # make bash tab compeletion not suck.
@@ -69,10 +69,10 @@ export SVN_EDITOR=emacs
 export GIT_EDITOR=emacs
 
 # turn on grep coloring.
-export GREP_OPTIONS=""
-export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
-export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
-export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
+# export GREP_OPTIONS=""
+# export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
+# export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
+# export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 
 # Make less a bit nicer. -S (don't wrap lines) -R color codes.
 export LESS=""

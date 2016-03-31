@@ -1,10 +1,26 @@
 #!/bin/bash
 
+# set a JDK default.
+function setjdk() {
+  if [ $# -ne 0 ]; then
+   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+   if [ -n "${JAVA_HOME+x}" ]; then
+    removeFromPath $JAVA_HOME
+   fi
+   export JAVA_HOME=`/usr/libexec/java_home -v $@`
+   export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}
+
+function removeFromPath() {
+    export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+
 # fix permissions in a symfony install.
 function symfix() {
     HTTP=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
-    sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
-    sudo chmod -R +a "$USER allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+    sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
+    sudo chmod -R +a "$USER allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
 }
 
 # run perl critic on a directory,
