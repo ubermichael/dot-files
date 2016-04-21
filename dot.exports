@@ -11,13 +11,7 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
 export PATH=$PATH:/usr/local/git/bin
 export PATH=$PATH:/usr/X11/bin
-export PATH=$PATH:/opt/local/bin
-export PATH=$PATH:/opt/local/sbin
 export PATH=$PATH:/usr/local/composer/vendor/bin
-
-# stupid ant.
-export ANT_HOME=/usr/local/ant
-export PATH=$PATH:$ANT_HOME/bin
 
 #command line
 export PS1="\[\e[0;33m\][\t][\u@\h \W]$\[\e[0m\] "
@@ -67,12 +61,6 @@ export FIGNORE=$FIGNORE:.git
 # make vc not suck.
 export SVN_EDITOR=emacs
 export GIT_EDITOR=emacs
-
-# turn on grep coloring.
-# export GREP_OPTIONS=""
-# export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
-# export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
-# export GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 
 # Make less a bit nicer. -S (don't wrap lines) -R color codes.
 export LESS=""

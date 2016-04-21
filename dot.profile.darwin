@@ -24,7 +24,6 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/pgsql/lib
 
 # #get the manpath set right
 export MANPATH=$MANPATH:/usr/local/pgsql/man
-export MANPATH=$MANPATH:/opt/local/share/man
 
 #try to make java happy
 export CLASSPATH=
