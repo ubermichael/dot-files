@@ -73,7 +73,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # open a second netbeans instance.
-alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.0.2.app" --args --userdir ~/Library/Application\ Support/NetBeans.alt'
+alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.1.app" --args --userdir ~/Library/Application\ Support/NetBeans.alt'
 
 # grep with auto coloring and excluded svn, git, cvs dirs
 alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.git '
