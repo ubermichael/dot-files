@@ -21,8 +21,8 @@ function symfix() {
     HTTP=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
     
     if [ $(uname) == 'Darwin' ]; then
-        sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
-        sudo chmod -R +a "$USER allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
+        sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" var
+        sudo chmod -R +a "$USER allow delete,write,append,file_inherit,directory_inherit" var
     else
         sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
         sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
