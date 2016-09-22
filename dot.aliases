@@ -77,3 +77,4 @@ alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.1.app" --args --userd
 
 # grep with auto coloring and excluded svn, git, cvs dirs
 alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.git '
+
