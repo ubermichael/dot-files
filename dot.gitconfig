@@ -45,6 +45,7 @@
     st = status
     ci = commit
     co = checkout
+    cp = cherry-pick
     l = log --oneline
     tags = tag -l
     branches = branch -a
