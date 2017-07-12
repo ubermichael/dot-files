@@ -52,6 +52,7 @@
     remotes = remote -v
     stashes = "!git --no-pager stash list"
     undo = reset --soft HEAD~1    
+    up = pull --rebase --autostash
     
 [diff]
     tool = opendiff
