@@ -3,8 +3,6 @@
 # #get that damn path thingy set up nicely.
 export PATH=/usr/local/bin
 export PATH=$PATH:/usr/local/mysql/bin
-export PATH=$PATH:/usr/local/pgsql/bin
-export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
@@ -12,6 +10,8 @@ export PATH=$PATH:/sbin
 export PATH=$PATH:/usr/local/git/bin
 export PATH=$PATH:/usr/X11/bin
 export PATH=$PATH:/usr/local/composer/vendor/bin
+export PATH=$PATH:/usr/local/pgsql/bin
+export PATH=$PATH:$HOME/bin
 
 #command line
 export PS1="\[\e[0;33m\][\t][\u@\h \W]$\[\e[0m\] "
