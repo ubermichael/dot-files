@@ -40,8 +40,11 @@ alias rmds='find . -name ".*DS_Store" -print -delete'
 alias rmlc='find . -name ".*localized" -print -delete'
 alias saxon-compile='java net.sf.saxon.Compile '
 alias saxon='java -jar ~/Classes/saxon9he.jar '
+alias saxon6='java -jar ~/Classes/saxon.jar '
 alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
 alias ncftp='EDITOR=/usr/bin/emacs ncftp '
+ 
+alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
  
 EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
 EXIST_PATH=/Applications/eXist-db

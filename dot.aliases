@@ -7,6 +7,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
 alias bash-reload='source ~/.profile'
 
+alias dt="date +%Y-%m-%d-%H%M%S"
+
 # url
 alias wget='wget --user-agent="Mozilla" -c --no-check-certificate '
 
@@ -36,7 +38,7 @@ alias la="ls -lha ${colorflag}"
 alias lsd='ls -l ${colorflag} | grep "^d"'
 
 # Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias ls="command ls -h ${colorflag}"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

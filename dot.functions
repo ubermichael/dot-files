@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# find a file with a pattern in name:
+function ff() { find . -type f -iname $* ; }
+
+# find a directory with a pattern in name:
+function fd() { find . -type d -iname $* ; }
+
 # set a JDK default.
 function setjdk() {
   if [ $# -ne 0 ]; then
