@@ -16,7 +16,7 @@ for f in dot.*; do
     echo "  cp $f ~/$g";
     if [ "$simulate" == 0 ]
     then
-        cp $f ~/$g;
+        cp $f $HOME/$g;
     fi
 done
 
