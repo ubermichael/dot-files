@@ -64,7 +64,6 @@ export GIT_EDITOR=emacs
 
 # Make less a bit nicer. -S (don't wrap lines) -R color codes.
 export LESS=""
-export LESS="$LESS -S"
 export LESS="$LESS -R"
 
 # Make rsync a little better.
