@@ -10,6 +10,8 @@
         editor=/usr/bin/emacs
         whitespace=nowarn
         autocrlf = input        
+	quotepath = off
+	filemode = false
 
 [github]
 	user = ubermichael
@@ -50,11 +52,9 @@
     tags = tag -l
     branches = branch -a
     remotes = remote -v
-    submodules = submodule status --recursive
     stashes = "!git --no-pager stash list"
     undo = reset --soft HEAD~1    
-    up = pull --rebase --autostash
-    subup = submodule update --remote --recursive
+    up = !git pull --rebase --autostash && git submodule foreach git checkout master && git submodule foreach git pull
     
 [diff]
     tool = opendiff
@@ -66,19 +66,17 @@
     cmd = opendiff $LOCAL $REMOTE -ancestor $BASE -merge $LOCAL
   
 [merge]
-    tool = opendiff
+	tool = opendiff
   
 [mergetool "opendiff"]
-    cmd = opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
+	cmd = opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
   
 [rerere]
-  enabled = 1
+        enabled = 1
     
-[git-up "fetch"]
-        all = true
-        
 [push]
 	default = simple
 
-[git-up "fetch"]
-	all = true
+[pull]
+	rebase = true
+	autoStash = true
