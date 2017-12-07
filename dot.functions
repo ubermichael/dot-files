@@ -27,6 +27,9 @@ function symfix() {
     HTTP=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
 
     for dir in "$@" 'var'; do
+        if [ ! -e $dir ]; then
+            continue
+        fi
     
         if [ $(uname) == 'Darwin' ]; then
             sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" $dir
