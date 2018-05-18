@@ -54,7 +54,7 @@
     remotes = remote -v
     stashes = "!git --no-pager stash list"
     undo = reset --soft HEAD~1    
-    up = !git pull --rebase --autostash && git submodule foreach git checkout master && git submodule foreach git pull
+    up = !git pull --autostash && git submodule foreach git checkout master && git submodule foreach git pull
     maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
 
 [diff]
@@ -79,11 +79,5 @@
 	default = simple
 
 [pull]
-	rebase = true
 	autoStash = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        
