@@ -9,3 +9,4 @@ skip-extended-insert
 
 [mysql]
 prompt=[\\r:\m:\\s][\u@\h] \d >
+user=root
