@@ -2,24 +2,15 @@
 
 # unixy stuff
 alias env='env | sort'
-alias genv='env | grep '
 alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
-alias bash-reload='source ~/.profile'
-
-alias dt="date +%Y-%m-%d-%H%M%S"
 
 # url
 alias wget='wget --user-agent="Mozilla" -c --no-check-certificate '
 
-# Gzip-enabled `curl`
-alias gurl="curl --compressed "
-
 # IP addresses
 alias ipaddress='curl ifconfig.me'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
-alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -43,36 +34,9 @@ alias ls="command ls -h ${colorflag}"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
-
-# OS X has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
-
-# OS X has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
-# (useful when executing time-consuming commands)
-alias badge="tput bel"
-
-# Intuitive map function
-# For example, to list all directories that contain a certain file:
-# find . -name .gitattributes | map dirname
-alias map="xargs -n1"
-
 # get Antlr working.
 alias antlr4="java -jar $HOME/Classes/antlr-4.2.2-complete.jar "
 alias grun="java org.antlr.v4.runtime.misc.TestRig "
-
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
-done
 
 # open a second netbeans instance.
 alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.2.app" --args --userdir ~/Library/Application\ Support/NetBeans.alt'

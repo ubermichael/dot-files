@@ -3,7 +3,6 @@
 # #get that damn path thingy set up nicely.
 export PATH=/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
@@ -12,7 +11,7 @@ export PATH=$PATH:/usr/X11/bin
 export PATH=$PATH:$HOME/bin
 
 # Shut up composer.
-COMPOSER_DISABLE_XDEBUG_WARN=1
+export COMPOSER_DISABLE_XDEBUG_WARN=1
 
 #command line
 export PS1="\[\e[0;33m\][\t][\u@\h \W]$\[\e[0m\] "
@@ -25,7 +24,11 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export EDITOR="/usr/bin/emacs"
 
 # Don’t clear the screen after quitting a manual page
-export MANPAGER="aless"
+if [ -f "/usr/local/bin/aless" ]; then
+	export MANPAGER="aless"
+else
+	export MANPAGER="less"
+fi
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
@@ -45,7 +48,7 @@ export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date"
 
 # make the history file update after every command,
 # not just when the shell closes.
-export PROMPT_COMMEND='history -a; history -n'
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # localizations
 # things to make perl happy
@@ -60,12 +63,10 @@ export FIGNORE=$FIGNORE:.svn
 export FIGNORE=$FIGNORE:.git
 
 # make vc not suck.
-export SVN_EDITOR=emacs
 export GIT_EDITOR=emacs
 
 # Make less a bit nicer. -S (don't wrap lines) -R color codes.
-export LESS=""
-export LESS="$LESS -R"
+export LESS="-R"
 
 # Make rsync a little better.
 export RSYNC_RSH=ssh

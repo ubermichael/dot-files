@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# find a file with a pattern in name:
-function ff() { find . -type f -iname $* ; }
-
-# find a directory with a pattern in name:
-function fd() { find . -type d -iname $* ; }
-
 # set a JDK default.
 function setjdk() {
+  if [ ! -f /usr/libexec/java_home ]; then
+  	return
+  fi
+  
   if [ $# -ne 0 ]; then
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
    if [ -n "${JAVA_HOME+x}" ]; then
@@ -39,103 +37,4 @@ function symfix() {
             sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX $dir
         fi
     done
-}
-
-# run perl critic on a directory,
-# format the output.
-function critic() {
-    perlcritic -4 . | perl -ple 's/^([^:]*): (.*? at line (\d+), column (\d+))/$1:$3:$4: $2/' > critic.log
-}
-
-# run perltidy on the files/directories passed as arguments.
-function perltidy() {
-    pt=/usr/local/bin/perltidy
-    for p in $@; do
-        if [ -f "$p" ]
-        then
-            $pt -b $p;
-        fi
-        if [ -d "$p" ]
-        then
-            find $p -type f -name '*.pm' -print -exec $pt -b '{}' \;
-            find $p -type f -name '*.pl' -print -exec $pt -b '{}' \;
-            find $p -type f -name '*.t' -print -exec $pt -b '{}' \;
-        fi
-    done
-    find . -type f -name "*.bak" -print -exec rm '{}' \;
-}
-
-# Determine size of a file or total size of a directory
-function fs() {
-    if du -b /dev/null > /dev/null 2>&1; then
-	local arg=-sbh
-    else
-	local arg=-sh
-    fi
-    if [[ -n "$@" ]]; then
-	du $arg -- "$@"
-    else
-	du $arg .[^.]* *
-    fi
-}
-
-# Create a data URL from a file
-function dataurl() {
-    local mimeType=$(file -b --mime-type "$1")
-    if [[ $mimeType == text/* ]]; then
-	mimeType="${mimeType};charset=utf-8"
-    fi
-    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
-# Test if HTTP compression (RFC 2616 + SDCH) is enabled for a given
-# URL.  Send a fake UA string for sites that sniff it instead of using
-# the Accept-Encoding header. (Looking at you, ajax.googleapis.com!)
-function httpcompression() {
-    encoding="$(curl -LIs -H 'User-Agent: Mozilla/5 Gecko' -H 'Accept-Encoding: gzip,deflate,compress,sdch' "$1" | grep '^Content-Encoding:')" && echo "$1 is encoded using ${encoding#* }" || echo "$1 is not using any encoding"
-}
-
-# All the dig info
-function digga() {
-    dig +nocmd "$1" any +multiline +noall +answer
-}
-
-# Escape UTF-8 characters into their 3-byte format
-function escape() {
-    printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
-    echo # newline
-}
-
-# Decode \x{ABCD}-style Unicode escape sequences
-function unidecode() {
-    perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
-    echo # newline
-}
-
-# Get a character’s Unicode code point
-function codepoint() {
-    perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))"
-    echo # newline
-}
-
-function extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xvjf $1    ;;
-      *.tar.gz)    tar xvzf $1    ;;
-      *.tgz)       tar xvzf $1    ;;
-      *.bz2)       bunzip2 $1     ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1      ;;
-      *.tar)       tar xvf $1     ;;
-      *.tbz2)      tar xvjf $1    ;;
-      *.tgz)       tar xvzf $1    ;;
-      *.zip)       unzip $1       ;;
-      *.Z)         uncompress $1  ;;
-      *.7z)        7z x $1        ;;
-      *)           echo "'$1' cannot be extracted via >extract<" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
 }

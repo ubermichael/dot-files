@@ -6,10 +6,10 @@
         
 [core]
 	excludesfile = ~/.gitignore_global
-        page=/usr/bin/aless
-        editor=/usr/bin/emacs
-        whitespace=nowarn
-        autocrlf = input        
+	page=/usr/bin/aless
+	editor=/usr/bin/emacs
+	whitespace=nowarn
+	autocrlf = input        
 	quotepath = off
 	fileMode = false
 
@@ -17,7 +17,7 @@
 	user = ubermichael
         
 [color]
-        ui = auto
+	ui = auto
 	diff = always
 	status = auto
 	branch = auto
@@ -38,17 +38,10 @@
 	changed = green
 	untracked = cyan
 
-[merge]
-        # Include summaries of merged commits in newly created merge
-        # commit messages
-        log = true
-        
 [alias]
     st = status
     ci = commit
     co = checkout
-    cp = cherry-pick
-    l = log --oneline
     tags = tag -l
     branches = branch -a
     remotes = remote -v

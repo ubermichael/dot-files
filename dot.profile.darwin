@@ -16,15 +16,6 @@ function emacs () {
     open -a Emacs "$@"
 }
 
-# get some dyna-loader happyness
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/pgsql/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/pgsql/lib
-
-# #get the manpath set right
-export MANPATH=$MANPATH:/usr/local/pgsql/man
-
 #try to make java happy
 export CLASSPATH=
 for JAR in ~/Classes/*.jar; do
@@ -38,40 +29,16 @@ export COPYFILE_DISABLE=true
 # useful aliases
 alias rmds='find . -name ".*DS_Store" -print -delete'
 alias rmlc='find . -name ".*localized" -print -delete'
-alias saxon-compile='java net.sf.saxon.Compile '
-alias saxon='java -jar ~/Classes/saxon9he.jar '
-alias saxon6='java -jar ~/Classes/saxon.jar '
+alias cemacs='/usr/bin/emacs -nw '
 alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
 alias ncftp='EDITOR=/usr/bin/emacs ncftp '
- 
+alias md5sum="md5" 
+alias sha1sum="shasum"
+alias badge="tput bel"
+
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
- 
-EXIST_URI=xmldb:exist://localhost:8080/exist/xmlrpc
-EXIST_PATH=/Applications/eXist-db
 
-function exist-client () {
-    URI=$EXIST_URI
-    USER=admin
-    CLI=$EXIST_PATH/bin/client.sh 
-    
-    JAVA_OPTIONS=-Xmx256M $CLI -ouri=$URI -u admin -s
-}
-function exist-app () {
-    URI=$EXIST_URI
-    USER=admin
-    CLI=$EXIST_PATH/bin/client.sh 
-    
-    JAVA_OPTIONS=-Xmx256MM $CLI -ouri=$URI -u admin
-}
-function exist-backup () {
-    URI=$EXIST_URI
-    DIR=~michael/cocoon/exist-backup
-    USER=admin
-    CLI=$EXIST_PATH/bin/backup.sh 
-
-    mkdir -p $DIR
-    JAVA_OPTIONS=-Xmx256M $CLI -d $DIR -u $USER -ouri=$URI -b /db
-}
-
-
-
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion 
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi

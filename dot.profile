@@ -36,28 +36,8 @@ shopt -s nocaseglob
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-#  ------------------------------------- 
-# command completion with ssh host<TAB>
-if [ -e ~/.ssh/known_hosts ]
-then
-	complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
-	complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" scp
-	complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ping
-	complete -c -f command sudo
-fi
-
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
-
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-
-# If possible, add git tab competion for oodles of git things.
-[ -f ~/.git-completion ] && source ~/.git-completion
 
 #  ------------------------------------- 
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
@@ -66,13 +46,4 @@ then
     . ~/.profile.${uname};
 else
     echo "warning: no os specific profile for ${uname}";
-fi
-
-# get perlbrew going             
-
-if [ -e /opt/perl/etc/bashrc ]
-then
-    export PERLBREW_ROOT=/opt/perl
-    source /opt/perl/etc/bashrc
-    source /opt/perl/etc/perlbrew-completion.bash
 fi
