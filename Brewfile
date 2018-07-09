@@ -30,6 +30,7 @@ tap "sass/sass"
 # cask "sizzlingkeys"
 # cask "sourcetree"
 # cask "spotify"
+# cask 'sqlitebrowser'
 # cask "transmission-remote-gui"
 # cask "transmission"
 # cask "vienna"
@@ -51,6 +52,7 @@ brew "gettext", link: true
 brew "git"
 brew "icu4c"
 brew "imagemagick"
+brew "jing-trang"
 brew "lame"
 brew "maven"
 brew "mysql", restart_service: true, link: true
@@ -59,7 +61,13 @@ brew "node"
 brew "npm"
 brew "openssl"
 brew "pcre"
-brew "php@5.6", restart_service: true, link: true
+
+brew "php", restart_service: false, link: true
+brew "php@7.1", restart_service: false, link: false
+brew "php@7.0", restart_service: false, link: false
+brew "php@5.6", restart_service: false, link: false
+brew "deployer"
+
 brew "pkg-config"
 brew "python"
 brew "readline"
