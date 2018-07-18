@@ -48,6 +48,7 @@
     stashes = "!git --no-pager stash list"
     undo = reset --soft HEAD~1    
     up = !git pull && git submodule foreach git checkout master && git submodule foreach git pull
+    upup = !git pull upstream master
     maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
 
 [diff]
