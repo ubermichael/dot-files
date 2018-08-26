@@ -1,7 +1,5 @@
 #!/bin/sh  -*- shell-script -*-
 
-export PAGER=aless	
-
 function con () {
     open -a Console $@;
 }
@@ -11,7 +9,7 @@ function emacs () {
     do
         if [ ! -f "$f" ]; then
             touch "$f";
-        fi        
+        fi
     done
     open -a Emacs "$@"
 }
@@ -32,13 +30,13 @@ alias rmlc='find . -name ".*localized" -print -delete'
 alias cemacs='/usr/bin/emacs -nw '
 alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
 alias ncftp='EDITOR=/usr/bin/emacs ncftp '
-alias md5sum="md5" 
+alias md5sum="md5"
 alias sha1sum="shasum"
 alias badge="tput bel"
 
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion 
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
