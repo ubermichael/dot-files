@@ -1,10 +1,11 @@
 # -*- ruby -*-
 
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # install the packages in this brew file:
 # `brew bundle install`
 
 # Install applications globally.
-cask_args appdir: "/Applications"
+cask_args appdir: "/Applications", "no-quarantine": true
 
 # Useful taps.
 tap "caskroom/cask"
@@ -15,6 +16,7 @@ tap "homebrew/services"
 cask "atom"
 cask "bbedit"
 cask "db-browser-for-sqlite"
+cask "clamxav"
 cask "emacs"
 cask "firefox"
 cask "gephi"
