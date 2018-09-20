@@ -5,6 +5,9 @@ alias env='env | sort'
 alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
 
+# horizontal line
+alias hr='printf $(printf "\e[1m%%%ds\e[0m\n" $(tput cols)) | tr " " ='
+
 # url
 alias wget='wget --user-agent="Mozilla" -c --no-check-certificate '
 

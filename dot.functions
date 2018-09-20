@@ -5,7 +5,7 @@ function setjdk() {
   if [ ! -f /usr/libexec/java_home ]; then
   	return
   fi
-  
+
   if [ $# -ne 0 ]; then
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
    if [ -n "${JAVA_HOME+x}" ]; then
@@ -14,6 +14,10 @@ function setjdk() {
    export JAVA_HOME=`/usr/libexec/java_home -v $@`
    export PATH=$JAVA_HOME/bin:$PATH
   fi
+}
+
+function man-preview() {
+  man -t "$@" | open -f -a Preview
 }
 
 function removeFromPath() {
@@ -28,7 +32,7 @@ function symfix() {
         if [ ! -e $dir ]; then
             continue
         fi
-    
+
         if [ $(uname) == 'Darwin' ]; then
             sudo chmod -R +a "$HTTP allow delete,write,append,file_inherit,directory_inherit" $dir
             sudo chmod -R +a "$USER allow delete,write,append,file_inherit,directory_inherit" $dir
