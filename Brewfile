@@ -24,6 +24,9 @@ cask "google-chrome"
 cask "handbrake"
 cask "libreoffice"
 cask "mpv"
+# the latest version of mysqlworkbench is not compatible with
+# os x 10.11.
+# cask "mysqlworkbench", version: "6.3.10"
 cask "netbeans"
 cask "nvalt"
 cask "oxygen-xml-editor"
