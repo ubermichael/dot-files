@@ -11,6 +11,8 @@
 	autocrlf = input
 	quotepath = off
 	fileMode = false
+	trustctime = false
+	preloadindex = true
 
 [github]
 	user = ubermichael
@@ -32,6 +34,9 @@
 	old = red bold
 	new = green bold
 
+[diff]
+	indentHeuristic = true
+
 [color "status"]
 	added = yellow
 	changed = green
@@ -50,9 +55,17 @@
     upup = !git pull upstream master
     maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
 
+[branch]
+	autosetuprebase = always
+
+[status]
+	color = true
+	submodulesummary = true
+
 [pager]
    diff = diff-so-fancy | less --tabs=1,5 -RFX
    show = diff-so-fancy | less --tabs=1,5 -RFX
+	 color = true
 
 [merge]
 	tool = opendiff
@@ -63,5 +76,16 @@
 [rerere]
   enabled = 1
 
+[log]
+	date = local
+
 [push]
 	default = simple
+[rebase]
+	autoStash = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+	pruneTags = true
+	output = full
