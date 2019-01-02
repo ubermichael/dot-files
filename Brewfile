@@ -58,6 +58,7 @@ brew "ffmpeg"
 brew "gawk"
 brew "gettext", link: true
 brew "git"
+brew "httpd"
 brew "icu4c"
 brew "imagemagick"
 # jing-trang never works.
