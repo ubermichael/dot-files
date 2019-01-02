@@ -22,11 +22,10 @@ cask "gephi"
 cask "go2shell"
 cask "google-chrome"
 cask "handbrake"
+cask "iterm2"
 cask "libreoffice"
 cask "mpv"
-# the latest version of mysqlworkbench is not compatible with
-# os x 10.11.
-# cask "mysqlworkbench", version: "6.3.10"
+cask "mysqlworkbench"
 cask "netbeans"
 cask "nvalt"
 cask "oxygen-xml-editor"
@@ -59,8 +58,6 @@ brew "ffmpeg"
 brew "gawk"
 brew "gettext", link: true
 brew "git"
-brew "hardlink-osx"
-brew "httpd"
 brew "icu4c"
 brew "imagemagick"
 # jing-trang never works.
@@ -68,7 +65,7 @@ brew "imagemagick"
 brew "lame"
 brew "lynx"
 brew "maven"
-brew "mysql@5.7", restart_service: true, link: true, conflicts_with: ["mysql"]
+brew "mysql"
 brew "ncftp"
 brew "node"
 brew "npm"
@@ -76,8 +73,7 @@ brew "openssl"
 brew "pandoc"
 brew "pcre"
 
-brew "php@7.2", restart_service: false, link: true
-brew "php@5.6", restart_service: false, link: false
+brew "php"
 brew "deployer" # must be after php.
 
 brew "pkg-config"
