@@ -46,6 +46,7 @@ cask "vienna"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "vlc"
+cask "whatsapp"
 
 # packages.
 brew "ant@1.9", link: true
