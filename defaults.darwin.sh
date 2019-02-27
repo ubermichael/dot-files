@@ -19,6 +19,9 @@ sudo scutil --set HostName "$COMPY_NAME"
 sudo scutil --set LocalHostName "$COMPY_NAME"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPY_NAME"
 
+# Make Mail.app show plain text when available.
+defaults write com.apple.mail PreferPlainText -bool TRUE
+
 # enable press and hold fpr accented chars.
 # http://support.apple.com/kb/ph11264
 # http://apple.stackexchange.com/questions/105098
@@ -43,7 +46,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Disable smooth scrolling
 # (Uncomment if you’re on an older Mac that messes up the animation)
-#defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
+defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
 
 # Disable opening and closing window animations
 # defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
