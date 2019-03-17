@@ -23,6 +23,7 @@ cask "gephi"
 cask "go2shell"
 cask "google-chrome"
 cask "handbrake"
+cask "intellij-idea"
 cask "iterm2"
 cask "java8"
 cask "intellij-idea"
@@ -55,6 +56,7 @@ brew "ant@1.9", link: true
 brew "autoconf"
 brew "bash-completion"
 brew "bagit"
+brew "bat"
 brew "bfg"
 brew "diff-so-fancy"
 brew "gawk"
@@ -74,7 +76,7 @@ brew "openssl"
 brew "pcre"
 
 brew "php@7.2"
-brew "deployer" # must be after php.
+brew "deployer", 'ignore-dependencies': true # must be after php.
 brew "composer"
 
 brew "pkg-config"
