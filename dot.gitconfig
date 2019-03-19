@@ -13,6 +13,7 @@
 	fileMode = false
 	trustctime = false
 	preloadindex = true
+        whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
 
 [github]
 	user = ubermichael

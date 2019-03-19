@@ -62,6 +62,9 @@ export FIGNORE=$FIGNORE:.o
 export FIGNORE=$FIGNORE:.svn
 export FIGNORE=$FIGNORE:.git
 
+# Some nice things for grep
+export GREP_OPTIONS='--color=auto -H -i -n --exclude-dir=.git'
+
 # make vc not suck.
 export GIT_EDITOR=emacs
 
