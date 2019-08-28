@@ -9,9 +9,9 @@ cask_args appdir: "/Applications", "no-quarantine": true
 
 # Useful taps.
 tap "caskroom/cask"
+tap "caskroom/versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/cask-versions"
 
 # Applications to install.
 cask "atom"
@@ -26,9 +26,7 @@ cask "google-chrome"
 cask "handbrake"
 cask "intellij-idea"
 cask "iterm2"
-cask "java8"
 cask "libreoffice"
-cask "marcedit"
 cask "microsoft-remote-desktop-beta"
 cask "mpv"
 cask "mysqlworkbench"
