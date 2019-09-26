@@ -48,7 +48,10 @@ else
     echo "warning: no os specific profile for ${uname}";
 fi
 
-eval `ssh-agent`
-for key in $(GLOBIGNORE="*.pub"; ls .ssh/id_rsa*); do
-    ssh-add $key
-done
+if [ compgen -G ".ssh/id_rsa*" > /dev/null]
+then
+    eval `ssh-agent`
+    for key in $(GLOBIGNORE="*.pub"; ls .ssh/id_rsa*); do
+        ssh-add $key
+    done
+fi
