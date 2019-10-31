@@ -55,6 +55,8 @@
     up = !git pull && git submodule foreach git checkout master && git submodule foreach git pull
     upup = !git pull upstream master
     maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
+    alias = !git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' | sed -e 's/\\ /=/'
+
 
 [branch]
 	autosetuprebase = always
