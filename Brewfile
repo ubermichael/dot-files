@@ -8,10 +8,10 @@
 cask_args appdir: "/Applications", "no-quarantine": true
 
 # Useful taps.
-tap "caskroom/cask"
-tap "caskroom/versions"
-tap "homebrew/core"
+tap "homebrew/cask"
 tap "homebrew/services"
+tap "homebrew/cask-versions"
+tap "TimidRobot/tap"
 
 # Applications to install.
 cask "atom"
@@ -30,7 +30,6 @@ cask "libreoffice"
 cask "microsoft-remote-desktop-beta"
 cask "mpv"
 cask "mysqlworkbench"
-cask "netbeans"
 cask "nvalt"
 cask "oxygen-xml-editor"
 cask "phpstorm"
@@ -49,7 +48,6 @@ cask "vagrant"
 cask "vienna"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
-cask "vlc"
 cask "webstorm"
 cask "whatsapp"
 cask "xscreensaver"
