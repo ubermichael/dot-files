@@ -52,7 +52,13 @@ cask "webstorm"
 cask "whatsapp"
 cask "xscreensaver"
 
-# packages.
+# ordered packages
+brew "php@7.2"
+brew "deployer", 'ignore-dependencies': true # must be after php.
+brew "composer", 'ignore-dependencies': true # must be after php.
+brew "composer"
+brew "php-cs-fixer"
+
 brew "ant@1.9", link: true
 brew "autoconf"
 brew "bash-completion"
@@ -74,7 +80,6 @@ brew "node"
 brew "npm"
 brew "openssl"
 brew "pcre"
-# PHP at the end.
 brew "pkg-config"
 brew "pv"
 brew "python"
@@ -86,11 +91,6 @@ brew "ssh-copy-id"
 brew "telnet"
 brew "tidy-html5"
 brew "wget"
-
-brew "php@7.2"
-brew "deployer", 'ignore-dependencies': true # must be after php.
-brew "composer"
-brew "php-cs-fixer"
 
 # pip3 install Sphinx
 # npm install --global bower yarn
