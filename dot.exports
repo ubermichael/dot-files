@@ -1,8 +1,12 @@
 #!/bin/bash
 
+BREW=$(brew --prefix)
+
 # #get that damn path thingy set up nicely.
-export PATH=/usr/local/bin
-export PATH=$PATH:/usr/local/sbin
+export PATH=$BREW/opt/ruby/bin
+export PATH=$PATH:$BREW/lib/ruby/gems/2.6.0/bin
+export PATH=$PATH:$BREW/bin
+export PATH=$PATH:$BREW/sbin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
@@ -73,3 +77,10 @@ export LESS="-R"
 
 # Make rsync a little better.
 export RSYNC_RSH=ssh
+
+# For compilers to find ruby
+export LDFLAGS="-L${BREW}/opt/ruby/lib"
+export CPPFLAGS="-I${BREW}/opt/ruby/include"
+
+# For pkg-config to find ruby
+export PKG_CONFIG_PATH="${BREW}/opt/ruby/lib/pkgconfig"
