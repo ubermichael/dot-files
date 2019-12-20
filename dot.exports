@@ -84,3 +84,7 @@ export CPPFLAGS="-I${BREW}/opt/ruby/include"
 
 # For pkg-config to find ruby
 export PKG_CONFIG_PATH="${BREW}/opt/ruby/lib/pkgconfig"
+
+# Make OS X shut up
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
