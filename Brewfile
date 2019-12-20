@@ -7,15 +7,18 @@
 # Install applications globally.
 cask_args appdir: "/Applications", "no-quarantine": true
 
-# Useful taps.
+# brew taps.
+tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/services"
 tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+
+# other taps
 tap "TimidRobot/tap"
 
 # Applications to install.
 cask "atom"
-cask "bbedit"
 cask "db-browser-for-sqlite"
 cask "emacs"
 cask "firefox"
@@ -27,11 +30,15 @@ cask "google-chrome"
 cask "handbrake"
 cask "intellij-idea"
 cask "iterm2"
+cask "java6"
+cask "java"
 cask "libreoffice"
+cask "marcedit"
 cask "microsoft-remote-desktop-beta"
 cask "mpv"
 cask "mysqlworkbench"
 cask "nvalt"
+cask "openrefine"
 cask "oxygen-xml-editor"
 cask "phpstorm"
 cask "postman"
@@ -61,9 +68,13 @@ brew "php-cs-fixer"
 
 brew "ant@1.9", link: true
 brew "autoconf"
+brew "bagit"
 brew "bash-completion"
+brew "bat"
 brew "cmc"
+brew "colordiff"
 brew "diff-so-fancy"
+brew "ffmpeg"
 brew "gawk"
 brew "gettext", link: true
 brew "git"
@@ -75,17 +86,19 @@ brew "imagemagick"
 brew "lame"
 brew "lynx"
 brew "maven"
-brew "mysql"
+brew "mysql", restart_service: true
 brew "ncftp"
 brew "node"
 brew "npm"
 brew "openssl"
 brew "pcre"
+brew "pipenv"
 brew "pkg-config"
 brew "pv"
 brew "python"
 brew "readline"
 brew "rename"
+brew "ruby"
 brew "saxon"
 brew "sqlite"
 brew "ssh-copy-id"
@@ -93,6 +106,7 @@ brew "telnet"
 brew "tidy-html5"
 brew "unixodbc"
 brew "wget"
+brew "yarn"
 
 # pip3 install Sphinx
 # npm install --global bower yarn
