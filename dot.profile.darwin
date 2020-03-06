@@ -40,3 +40,8 @@ alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
+
+function alert() {
+    script="display alert \"Term\" message \"$1\""
+    osascript -e "$script"
+}
