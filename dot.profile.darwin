@@ -5,7 +5,7 @@ function con () {
 }
 
 function emacs () {
-    /usr/local/bin/emacsclient -c $* &
+    open -na Emacs "$*"
 }
 
 #try to make java happy
