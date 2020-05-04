@@ -64,7 +64,7 @@ cask "xscreensaver"
 brew "php@7.2"
 brew "deployer", 'ignore-dependencies': true # must be after php.
 brew "composer", 'ignore-dependencies': true # must be after php.
-brew "php-cs-fixer"
+brew "php-cs-fixer", 'ignore-dependencies': true # must be after php.
 
 brew "ant@1.9", link: true
 brew "autoconf"
