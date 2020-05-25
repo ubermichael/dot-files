@@ -7,7 +7,7 @@ done
 unset file
 
 #  ------------------------------------- 
-setjdk 13
+setjdk 14
 
 #  ------------------------------------- 
 # check the window size after each command and, if necessary,
