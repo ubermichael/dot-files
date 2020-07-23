@@ -10,11 +10,7 @@ cask_args appdir: "/Applications", "no-quarantine": true
 # brew taps.
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
-
-# other taps
-tap "TimidRobot/tap"
 
 # Applications to install.
 cask "atom"
@@ -25,12 +21,10 @@ cask "handbrake"
 cask "iterm2"
 cask "kodi"
 cask "mpv"
-cask "slack"
 cask "spotify"
 cask "transmission"
 cask "vlc"
 
-brew "cmc"
 brew "ffmpeg"
 brew "pv"
 brew "python"

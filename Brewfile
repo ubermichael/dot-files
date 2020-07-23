@@ -10,12 +10,14 @@ cask_args appdir: "/Applications", "no-quarantine": true
 # brew taps.
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/cask-drivers"
 
 # other taps
+tap "dart-lang/dart"
+tap "sass/sass"
 tap "TimidRobot/tap"
 
 # Applications to install.
@@ -65,12 +67,15 @@ brew "deployer", 'ignore-dependencies': true # must be after php.
 brew "composer", 'ignore-dependencies': true # must be after php.
 brew "php-cs-fixer", 'ignore-dependencies': true # must be after php.
 
-brew "ant"
+brew "ant@1.9"
 brew "autoconf"
 brew "bash-completion"
 brew "bat"
+brew "clamav"
 brew "cmc"
 brew "colordiff"
+brew "coreutils"
+brew "curl-openssl"
 brew "diff-so-fancy"
 brew "ffmpeg"
 brew "gawk"
@@ -78,6 +83,7 @@ brew "gettext", link: true
 brew "git"
 brew "httpd"
 brew "hub"
+brew "jq"
 brew "icu4c"
 brew "imagemagick"
 brew "lame"
@@ -98,7 +104,6 @@ brew "ruby"
 brew "saxon"
 brew "sqlite"
 brew "ssh-copy-id"
-brew "telnet"
 brew "tidy-html5"
 brew "unixodbc"
 brew "wget"

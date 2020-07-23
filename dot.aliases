@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # unixy stuff
-alias bell="echo -e '\a'"
 alias env='env | sort'
 alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
@@ -27,9 +26,6 @@ alias ls="command ls -hF ${colorflag}"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-# grep with auto coloring and excluded svn, git, cvs dirs
-alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.git '
 
 # composer always runs out of memory. booooooo.
 alias composer='php -d memory_limit=-1 /usr/local/bin/composer '
