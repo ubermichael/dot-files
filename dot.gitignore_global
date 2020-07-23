@@ -3,5 +3,3 @@
 .emacs.desktop
 .emacs.desktop.lock
 *.log
-.svn
-CVS

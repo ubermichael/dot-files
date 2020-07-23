@@ -60,14 +60,11 @@ export LC_ALL=en_US.UTF-8
 export LANG="en_CA"
 
 # make bash tab compeletion not suck.
-export FIGNORE=CVS
 export FIGNORE=$FIGNORE:\~
-export FIGNORE=$FIGNORE:.o
-export FIGNORE=$FIGNORE:.svn
 export FIGNORE=$FIGNORE:.git
 
 # Some nice things for grep
-export GREP_OPTIONS='--color=auto -H -i -n --exclude-dir=.git'
+export GREP_OPTIONS='--color=auto --exclude-dir=.git'
 
 # make vc not suck.
 export GIT_EDITOR=emacs
@@ -87,4 +84,3 @@ export PKG_CONFIG_PATH="${BREW}/opt/ruby/lib/pkgconfig"
 
 # Make OS X shut up
 export BASH_SILENCE_DEPRECATION_WARNING=1
-

@@ -8,12 +8,6 @@ function emacs () {
     open -na Emacs "$*"
 }
 
-#try to make java happy
-export CLASSPATH=
-for JAR in ~/Classes/*.jar; do
-    export CLASSPATH=$CLASSPATH:$JAR
-done
-
 # make tar not suck.
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true
@@ -21,16 +15,13 @@ export COPYFILE_DISABLE=true
 # useful aliases
 alias rmds='find . -name ".*DS_Store" -print -delete'
 alias rmlc='find . -name ".*localized" -print -delete'
-alias cemacs='/usr/bin/emacs -nw '
-alias semacs='sudo /Applications/Emacs.app/Contents/MacOS/Emacs -nw '
-alias ncftp='EDITOR=/usr/bin/emacs ncftp '
 alias md5sum="md5"
 alias sha1sum="shasum"
 alias badge="tput bel"
 
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[ -f `brew --prefix`/etc/bash_completion ] && . `brew --prefix`/etc/bash_completion
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi

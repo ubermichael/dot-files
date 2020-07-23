@@ -6,15 +6,8 @@ alias env='env | sort'
 alias path='echo -e ${PATH//:/\\n}'
 alias j='jobs'
 
-# horizontal line
-alias hr='printf $(printf "\e[1m%%%ds\e[0m\n" $(tput cols)) | tr " " ='
-
 # url
 alias wget='wget --user-agent="Mozilla" -c --no-check-certificate '
-
-# IP addresses
-alias ipaddress='curl ifconfig.me'
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -29,21 +22,11 @@ alias l="ls -lFh ${colorflag}"
 # List all files colorized in long format, including dot files
 alias la="ls -lFha ${colorflag}"
 
-# List only directories
-alias lsd='ls -lF ${colorflag} | grep "^d"'
-
 # Always use color output for `ls`
 alias ls="command ls -hF ${colorflag}"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-# get Antlr working.
-alias antlr4="java -jar $HOME/Classes/antlr-4.2.2-complete.jar "
-alias grun="java org.antlr.v4.runtime.misc.TestRig "
-
-# open a second netbeans instance.
-alias altbeans='open -n "/Applications/Netbeans/Netbeans 8.2.app" --args --userdir ~/Library/Application\ Support/NetBeans.alt'
 
 # grep with auto coloring and excluded svn, git, cvs dirs
 alias grep='grep --color=auto --exclude-dir=.svn --exclude-dir=.git '

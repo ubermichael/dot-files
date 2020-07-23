@@ -6,15 +6,15 @@ for file in ~/.{exports,aliases,functions}; do
 done
 unset file
 
-#  ------------------------------------- 
+#  -------------------------------------
 setjdk 14
 
-#  ------------------------------------- 
+#  -------------------------------------
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-#  ------------------------------------- 
+#  -------------------------------------
 
 # turn off ^S/^Q to suspend/resume the term
 stty -ixon
@@ -39,7 +39,7 @@ HISTCONTROL=ignoreboth
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
-#  ------------------------------------- 
+#  -------------------------------------
 uname=`uname | tr '[:upper:]' '[:lower:]'`;
 if [ -e ~/.profile.${uname} ]
 then
@@ -48,10 +48,21 @@ else
     echo "warning: no os specific profile for ${uname}";
 fi
 
-if compgen -G "$HOME/.ssh/id_rsa*" > /dev/null;
-then
-    eval `ssh-agent`
-    for key in $(GLOBIGNORE="*.pub"; ls .ssh/id_rsa*); do
-        ssh-add $key
-    done
+if compgen -G "$HOME/.ssh/id_rsa*" > /dev/null; then
+
+    agent_file=$HOME/.ssh/agent
+    ssh-add -l &>/dev/null
+
+    if [ "$?" == 2 ]; then
+        test -r $agent_file && \
+            eval "$(<$agent_file)" >/dev/null
+        
+        ssh-add -l &>/dev/null
+        if [ "$?" == 2 ]; then
+            (umask 066; ssh-agent > $agent_file)
+            eval "$(<$agent_file)" >/dev/null
+            ssh-add
+        fi
+    fi
 fi
+
