@@ -49,7 +49,6 @@ else
 fi
 
 if compgen -G "$HOME/.ssh/id_rsa*" > /dev/null; then
-
     agent_file=$HOME/.ssh/agent
     ssh-add -l &>/dev/null
 

@@ -4,7 +4,7 @@ BREW=$(brew --prefix)
 
 # #get that damn path thingy set up nicely.
 export PATH=$BREW/opt/ruby/bin
-export PATH=$PATH:$BREW/lib/ruby/gems/2.6.0/bin
+export PATH=$PATH:$BREW/lib/ruby/gems/2.7.0/bin
 export PATH=$PATH:$BREW/bin
 export PATH=$PATH:$BREW/sbin
 export PATH=$PATH:/usr/bin
@@ -32,7 +32,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # Make emacs the default editor
-export EDITOR="/usr/bin/emacs"
+export EDITOR="/usr/local/bin/emacs"
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
@@ -55,7 +55,6 @@ export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date"
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # localizations
-# things to make perl happy
 export LC_ALL=en_US.UTF-8
 export LANG="en_CA"
 
@@ -67,7 +66,7 @@ export FIGNORE=$FIGNORE:.git
 export GREP_OPTIONS='--color=auto --exclude-dir=.git'
 
 # make vc not suck.
-export GIT_EDITOR=emacs
+export GIT_EDITOR=/usr/local/bin/emacs
 
 # Make less a bit nicer. -S (don't wrap lines) -R color codes.
 export LESS="-R"

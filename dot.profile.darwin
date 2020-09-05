@@ -4,10 +4,6 @@ function con () {
     open -a Console $@;
 }
 
-function emacs () {
-    open -na Emacs "$*"
-}
-
 # make tar not suck.
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true

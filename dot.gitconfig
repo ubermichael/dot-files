@@ -13,8 +13,8 @@
 	fileMode = false
 	trustctime = false
 	preloadindex = true
-  whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
-  eol = lf
+        whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+        eol = lf
 
 [github]
 	user = ubermichael
@@ -38,7 +38,7 @@
 
 [diff]
 	indentHeuristic = true
-  mnemonicprefix = true
+        mnemonicprefix = true
 
 [color "status"]
 	added = yellow
