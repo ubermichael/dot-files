@@ -28,4 +28,4 @@ alias ls="command ls -hF ${colorflag}"
 alias sudo='sudo '
 
 # composer always runs out of memory. booooooo.
-alias composer='php -d memory_limit=-1 /usr/local/bin/composer '
+# alias composer='php -d memory_limit=-1 /usr/local/bin/composer '
