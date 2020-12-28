@@ -6,14 +6,14 @@ simulate=0;
 
 while getopts "n" options; do
     case $options in
-        n) echo "$cmd simulating."; simulate=1 ;;
+        n) simulate=1 ;;
         *) echo "usage: $cmd [-n]"; exit 1 ;;
     esac
 done
 
 for f in dot.*; do
     g="$HOME/${f/dot/}"
-    echo "  ln $f $g";
+    echo "ln $f $g"
     if [[ "$simulate" == 1 ]]; then
         continue
     fi
