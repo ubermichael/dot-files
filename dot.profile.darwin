@@ -1,7 +1,7 @@
-#!/bin/sh  -*- shell-script -*-
+#!/bin/bash
 
 function con () {
-    open -a Console $@;
+    open -a Console "$@";
 }
 
 # make tar not suck.
@@ -17,9 +17,9 @@ alias badge="tput bel"
 
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
-[ -f `brew --prefix`/etc/bash_completion ] && . `brew --prefix`/etc/bash_completion
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+if [ -r /usr/local/etc/profile.d/bash_completion.sh ]; then
+    # shellcheck disable=SC1091
+    source /usr/local/etc/profile.d/bash_completion.sh
 fi
 
 function alert() {

@@ -12,10 +12,12 @@ while getopts "n" options; do
 done
 
 for f in dot.*; do
-    g=`echo $f | sed -e 's/^dot//'`;
-    echo "  cp $f ~/$g";
-    if [ "$simulate" == 0 ]
-    then
-        cp $f $HOME/$g;
+    g="$HOME/${f/dot/}"
+    echo "  ln $f $g";
+    if [[ "$simulate" == 1 ]]; then
+        continue
     fi
+    
+    rm -f "$g"
+    ln "$f" "$g"    
 done

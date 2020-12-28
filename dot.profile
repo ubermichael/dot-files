@@ -1,10 +1,13 @@
-#!/bin/bash  -*- shell-script -*-
+#!/bin/bash
 
-# load the shell dotfiles and then a few extras.
-for file in ~/.{exports,aliases,functions}; do
-    [ -r "$file" ] && source "$file"
-done
-unset file
+# shellcheck source=dot.exports
+source "$HOME/.exports"
+
+# shellcheck source=dot.aliases
+source "$HOME/.aliases"
+
+# shellcheck source=dot.functions
+source "$HOME/.functions"
 
 #  -------------------------------------
 setjdk 15
@@ -40,10 +43,11 @@ HISTCONTROL=ignoreboth
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
 #  -------------------------------------
-uname=`uname | tr '[:upper:]' '[:lower:]'`;
-if [ -e ~/.profile.${uname} ]
+uname=$(uname | tr '[:upper:]' '[:lower:]')
+if [ -e "$HOME/.profile.${uname}" ]
 then
-    . ~/.profile.${uname};
+    # shellcheck disable=SC1090
+    source "$HOME/.profile.${uname}";
 else
     echo "warning: no os specific profile for ${uname}";
 fi
@@ -53,13 +57,13 @@ if compgen -G "$HOME/.ssh/id_rsa*" > /dev/null; then
     ssh-add -l &>/dev/null
 
     if [ "$?" == 2 ]; then
-        test -r $agent_file && \
-            eval "$(<$agent_file)" >/dev/null
+        test -r "$agent_file" && \
+            eval "$(<"$agent_file")" >/dev/null
         
         ssh-add -l &>/dev/null
         if [ "$?" == 2 ]; then
-            (umask 066; ssh-agent > $agent_file)
-            eval "$(<$agent_file)" >/dev/null
+            (umask 066; ssh-agent > "$agent_file")
+            eval "$(<"$agent_file")" >/dev/null
             ssh-add
         fi
     fi

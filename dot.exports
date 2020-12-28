@@ -35,6 +35,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export EDITOR="/usr/local/bin/emacs"
 
 # Highlight section titles in manual pages
+# shellcheck disable=SC2155
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
 
 # Allow ! in commands
@@ -68,7 +69,7 @@ export GREP_OPTIONS='--color=auto --exclude-dir=.git'
 # make vc not suck.
 export GIT_EDITOR=/usr/local/bin/emacs
 
-# Make less a bit nicer. -S (don't wrap lines) -R color codes.
+# Make less a bit nicer. -R color codes.
 export LESS="-R"
 
 # Make rsync a little better.

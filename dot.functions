@@ -2,28 +2,32 @@
 
 # set a JDK default.
 function setjdk() {
-  if [ ! -f /usr/libexec/java_home ]; then
+    if [ ! -f /usr/libexec/java_home ]; then
   	return
-  fi
-
-  if [ $# -ne 0 ]; then
-   removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-   if [ -n "${JAVA_HOME+x}" ]; then
-    removeFromPath $JAVA_HOME
-   fi
-   export JAVA_HOME=`/usr/libexec/java_home -v $@`
-   export PATH=$JAVA_HOME/bin:$PATH
-  fi
+    fi
+    
+    if [ $# -ne 0 ]; then
+        removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+        if [ -n "${JAVA_HOME+x}" ]; then
+            removeFromPath "$JAVA_HOME"
+        fi
+        # shellcheck disable=SC2068,SC2155
+        export JAVA_HOME=$(/usr/libexec/java_home -v $@)
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
 }
 
 function removeFromPath() {
-    export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+    # shellcheck disable=SC2155
+    export PATH=$(echo "$PATH" | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
 function composer() {
+    phar=/usr/local/bin/composer.phar
+    
     if [ -e composer.phar ]; then
-        php -d memory_limit=-1 composer.phar $@
-    else
-        php -d memory_limit=-1 /usr/local/bin/composer.phar $@
+        phar=composer.phar
     fi
+
+    php -d memory_limit=-1 $phar "$@"
 }
