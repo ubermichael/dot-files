@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+apm=/usr/local/bin/apm
+brew=/usr/local/bin/brew
+composer=/usr/local/bin/composer
+npm=/usr/local/bin/npm
+
+$brew update --quiet
+$brew upgrade --greedy
+$brew cleanup -s
+$brew doctor
+
+$apm upgrade -c false
+
+$npm update -g
+
+$composer global update
