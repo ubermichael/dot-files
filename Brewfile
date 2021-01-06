@@ -88,6 +88,7 @@ brew "jq"
 brew "lame"
 brew "lnav"
 brew "lynx"
+brew "mailhog"
 brew "maven"
 brew "mysql", restart_service: true
 brew "node"
