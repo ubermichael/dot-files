@@ -31,3 +31,26 @@ function composer() {
 
     php -d memory_limit=-1 $phar "$@"
 }
+
+function atomp () {
+  ATOM_TEMP="$(mktemp /tmp/atom.XXXX)"
+  cat > "$ATOM_TEMP"
+  atom --wait "$ATOM_TEMP"
+  rm "$ATOM_TEMP"
+}
+
+function backupdbs () {
+    MY_DUMPOPT=(--opt --dump-date --skip-extended-insert --order-by-primary)
+    DATE=$(date "+%Y-%m-%d");
+
+    databases=$(mysql -e 'show databases;' --skip-column-names -B | grep -vE 'sys|_schema|mysql')
+    for db in $databases; do
+        filename="$db-$DATE.sql"
+        rm -f "$filename" "${filename}.bz2"
+        echo -n "copying $db to $filename"
+        mysqldump "${MY_DUMPOPT[@]}" -r "$filename" "$db"
+        echo -n " compressing"
+        bzip2 -9 "$filename"
+        echo " done."
+    done
+}
