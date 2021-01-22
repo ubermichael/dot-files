@@ -54,3 +54,28 @@ function backupdbs () {
         echo " done."
     done
 }
+
+function rdb () {
+    if [[ $# -lt 1 ]]; then
+        echo "usage: $FUNC_NAME db [sql]"
+        return 1
+    fi
+
+    local name="$1"
+
+    mysql -e "DROP DATABASE IF EXISTS $name"
+    mysql -e "CREATE DATABASE $name"
+    mysql -e "DROP USER IF EXISTS $name@localhost"
+    mysql -e "CREATE USER $name@localhost IDENTIFIED BY 'abc123'"
+    mysql -e "GRANT ALL ON $name.* TO $name@localhost"
+
+    if [[ $# -eq 2 ]]; then
+        local file="$2"
+        if [[ -r $file ]]; then
+            pv "$file" | mysql "$name"
+        else
+            echo "Cannot read $file."
+            return 1
+        fi
+    fi
+}
