@@ -1,103 +1,42 @@
 # -*- conf -*-
 
 [user]
-	name = Michael Joyce
-	email = ubermichael@gmail.com
+email = ubermichael@gmail.com
+name = Michael Joyce
 
 [core]
-	excludesfile = ~/.gitignore_global
-	editor=/usr/bin/emacs
-	whitespace=nowarn
-	autocrlf = input
-	quotepath = off
-	fileMode = false
-	trustctime = false
-	preloadindex = true
-        whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
-        eol = lf
-
-[github]
-	user = ubermichael
-
-[color]
-	ui = auto
-	diff = always
-	status = auto
-	branch = auto
-
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+editor=/usr/bin/emacs
+excludesfile = ~/.gitignore_global
+fileMode = false
+preloadindex = true
+quotepath = off
+trustctime = false
+whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+whitespace=nowarn
 
 [diff]
-	indentHeuristic = true
-        mnemonicprefix = true
+algorithm = minimal
 
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+[github]
+user = ubermichael
 
 [alias]
-  st = status
-  ci = commit
-  co = checkout
-  tags = tag -l
-  branches = branch -a
-  remotes = remote -v
-  stashes = "!git --no-pager stash list"
-  undo = reset --soft HEAD~1
-  up = !git pull && git submodule foreach git checkout master && git submodule foreach git pull
-  upup = !git pull upstream master
-  maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
-  alias = !git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' | sed -e 's/\\ /=/'
+alias = !git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' | sed -e 's/\\ /=/'
+branches = branch -a
+ci = commit
+co = checkout
+maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
+remotes = remote -v
+st = status
+stashes = "!git --no-pager stash list"
+tags = tag -l
+undo = reset --soft HEAD~1
+up = !git pull && git submodule foreach git checkout master && git submodule foreach git pull
+upup = !git pull upstream master
 
-[status]
-	color = true
-	submodulesummary = true
+[grep]
+lineNumber = true
+column = true
 
-[pager]
-	 diff = diff-so-fancy | less --tabs=1,5 -RFX
-	 show = diff-so-fancy | less --tabs=1,5 -RFX
-	 color = true
-
-[merge]
-	tool = opendiff
-
-[mergetool "opendiff"]
-	cmd = opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED
-
-[log]
-	date = local
-
-[push]
-	default = simple
-
-[fetch]
-	prune = true
-	pruneTags = true
-	output = full
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
-[pull]
-	rebase = false
-
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[rebase]
+abbreviateCommands = true
