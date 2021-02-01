@@ -91,6 +91,7 @@ function recrud() {
   for entity in "$@"; do
       echo test.App\\Repository\\"${entity}"Repository: \'@App\\Repository\\"${entity}"Repository\'
   done
+}
 
 function brewup() {
     brew=/usr/local/bin/brew
