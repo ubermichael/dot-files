@@ -40,3 +40,6 @@ column = true
 
 [rebase]
 abbreviateCommands = true
+
+[pull]
+rebase = false
