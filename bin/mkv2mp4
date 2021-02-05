@@ -1,0 +1,47 @@
+#!/bin/sh
+
+#  ------------------------------------- 
+
+T=''
+
+#  ------------------------------------- 
+
+threads=0
+
+format=mp4
+vcodec=libx264
+preset=medium
+
+# video bit rate
+vb=2048k 
+
+acodec=libmp3lame
+ac=2
+ab=128k
+
+threads=0
+
+#  ------------------------------------- 
+
+in_file=$1;
+outfile=`echo "$in_file" | sed -e 's/\.[a-zA-Z0-9]*$//'`
+outfile=$outfile.$format
+
+#  ------------------------------------- 
+
+echo "$in_file --==>> $outfile";
+
+ffmpeg -i "$in_file" \
+    $T \
+    -threads $threads \
+    -q:v 0 \
+    -vcodec $vcodec \
+    -preset $preset \
+    -b:v $vb \
+    -acodec $acodec \
+    -ac $ac \
+    -ab $ab \
+    -f $format \
+    -y \
+    "$outfile"
+

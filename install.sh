@@ -11,13 +11,23 @@ while getopts "n" options; do
     esac
 done
 
+for f in bin/*; do
+  g="$HOME"/bin/$(basename $f);
+  echo "ln $f $g"
+  if [[ "$simulate" == 1 ]]; then
+    continue
+  fi
+  rm -f "$g"
+  ln "$f" "$g"
+done
+
 for f in dot.*; do
     g="$HOME/${f/dot/}"
     echo "ln $f $g"
     if [[ "$simulate" == 1 ]]; then
         continue
     fi
-    
+
     rm -f "$g"
-    ln "$f" "$g"    
+    ln "$f" "$g"
 done

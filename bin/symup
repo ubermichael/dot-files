@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $(git st --porcelain --untracked-files=no) ]]; then
+    echo "Modified files in the tree. Cannot continue."
+    git st --porcelain --untracked-files=no
+    exit
+fi
+
+branch=$(git symbolic-ref --short -q HEAD)
+
+# make sure we're on the most recent commit from everything.
+git pull upstream "$branch"
+git pull
+git submodule foreach git checkout "$branch"
+git submodule foreach git pull
+
+# get the symfony et al. updates.
+# composer is a memory hog.
+php -d memory_limit=-1 /usr/local/bin/composer update
+
+# test it.
+./bin/phpunit
+
+# yarn upgrade.
+yarn upgrade
+
+# commit & push. Allow the commands to fail if the composer update did nothing.
+git commit -am "composer update." || true
+
+# push it.
+git push
+
+echo "security check."
+symfony security:check --quiet
+
+echo "format check"
+php-cs-fixer fix --diff --dry-run
+
+echo "config lint"
+./bin/console lint:yaml --quiet config --parse-tags
+
+echo "twig lint"
+./bin/console lint:twig --quiet templates
+
+echo "container lint"
+./bin/console lint:container --quiet
+
+echo "schema check"
+./bin/console doctrine:schema:validate -q -n --skip-sync
+
+echo "composer check"
+composer --quiet validate
+
+echo "dependency check"
+composer show -Do
+
+# deploy it.
+echo "deployment"
+dep deploy dhil
+
+# and create a pull request.
+echo "pull request"
+hub pull-request -o -m "Composer update." -m "Update symfony and dependencies via composer" -b "$branch" 

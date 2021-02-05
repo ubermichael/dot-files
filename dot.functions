@@ -139,3 +139,13 @@ function symlint() {
 
     echo "Complete."
 }
+
+function symuser() {
+  $user = "$1"
+  $name = "$2"
+  $inst = "$3"
+  ./bin/console nines:user:create "$user" "$name" "$inst"
+  ./bin/console nines:user:activate "$user"
+  ./bin/console nines:user:password "$user" abc123
+  ./bin/console nines:user:promote "$user" ROLE_ADMIN
+}
