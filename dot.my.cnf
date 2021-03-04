@@ -14,5 +14,4 @@ password=abc123
 prompt=[\\r:\m:\\s][\u@\h] \d >
 user=root
 password=abc123
-auto_vertical_output
 default_character_set=utf8
