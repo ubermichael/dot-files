@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cmd=`basename $0`;
-hostname=$1;
+cmd=$(basename "$0");
 simulate=0;
 
 while getopts "n" options; do
