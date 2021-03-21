@@ -11,6 +11,7 @@ while getopts "n" options; do
     esac
 done
 
+mkdir -p "$HOME/bin"
 for f in bin/*; do
   g="$HOME"/bin/$(basename $f);
   echo "ln $f $g"

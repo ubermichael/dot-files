@@ -83,11 +83,15 @@ function rdb () {
 function recrud() {
   for entity in "$@"; do
       ./bin/console make:entity --regenerate App\\Entity\\"$entity"
+      ./bin/console nines:make:repo "$entity"
       ./bin/console nines:make:fixture "$entity"
       ./bin/console nines:make:crud "$entity"
       ./bin/console nines:make:test "$entity"
   done
 
+  if [ -e .php_cs.dist ] || [ -e .php_cs ]; then
+    php-cs-fixer --quiet fix
+  fi
   for entity in "$@"; do
       echo test.App\\Repository\\"${entity}"Repository: \'@App\\Repository\\"${entity}"Repository\'
   done
@@ -141,9 +145,9 @@ function symlint() {
 }
 
 function symuser() {
-  $user = "$1"
-  $name = "$2"
-  $inst = "$3"
+  user="$1"
+  name="$2"
+  inst="$3"
   ./bin/console nines:user:create "$user" "$name" "$inst"
   ./bin/console nines:user:activate "$user"
   ./bin/console nines:user:password "$user" abc123
