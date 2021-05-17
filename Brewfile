@@ -33,12 +33,13 @@ cask "iina"
 cask "intellij-idea"
 cask "iterm2"
 cask "lastpass"
-cask "libreoffice"
 cask "logitech-control-center"
 cask "microsoft-remote-desktop-beta"
+cask "microsoft-teams"
 cask "mpv"
 cask "mysqlworkbench"
 cask "nvalt"
+cask "onedrive"
 cask "oxygen-xml-editor"
 cask "phpstorm"
 cask "postman"
@@ -67,48 +68,34 @@ brew "deployer", 'ignore-dependencies': true # must be after php.
 brew "composer", 'ignore-dependencies': true # must be after php.
 brew "php-cs-fixer", 'ignore-dependencies': true # must be after php.
 
-brew "ant@1.9"
-brew "autoconf"
-brew "bash-completion"
-brew "bat"
-brew "cmc"
-brew "coreutils"
-brew "curl-openssl"
-brew "ffmpeg"
-brew "gawk"
-brew "gettext", link: true
-brew "git"
-brew "httpd"
-brew "httpie"
-brew "hub"
-brew "icu4c"
-brew "imagemagick"
-brew "jq"
-brew "lame"
-brew "lnav"
-brew "lynx"
-brew "mailhog"
-brew "maven"
-brew "mysql", restart_service: true
-brew "node"
-brew "npm"
-brew "openjdk"
-brew "openssl"
-brew "pcre"
-brew "pipenv"
-brew "pkg-config"
-brew "pv"
-brew "python"
-brew "readline"
-brew "rename"
-brew "sass"
-brew "saxon"
-brew "shellcheck"
-brew "sqlite"
-brew "ssh-copy-id"
-brew "tidy-html5"
-brew "wget"
-brew "yarn"
+install ant@1.9
+install bash-completion
+install bat
+install clamav
+install coreutils
+install ffmpeg
+install git
+install httpd
+install httpie
+install hub
+install imagemagick
+install jq
+install lnav
+install lynx
+install mailhog
+install mariadb
+install maven
+install moreutils
+install pv
+install rename
+install ruby
+install saxon
+install shellcheck
+install solr
+install ssh-copy-id
+install timidrobot/tap/cmc
+install wget
+install yarn
 
 # pip3 install Sphinx
 # npm install --global bower yarn

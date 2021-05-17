@@ -62,4 +62,4 @@ dep deploy dhil
 
 # and create a pull request.
 echo "pull request"
-hub pull-request -o -m "Composer update." -m "Update symfony and dependencies via composer" -b "$branch" 
+hub pull-request -o -m "Composer update." -m "Update symfony and dependencies via composer" -b "$branch"

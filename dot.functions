@@ -89,7 +89,7 @@ function recrud() {
       ./bin/console nines:make:test "$entity"
   done
 
-  if [ -e .php_cs.dist ] || [ -e .php_cs ]; then
+  if [ -e .php_cs.dist ] || [ -e .php_cs ] || [ -e .php-cs-fixer.dist.php ]; then
     php-cs-fixer --quiet fix
   fi
   for entity in "$@"; do
