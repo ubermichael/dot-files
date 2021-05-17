@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BREW=$(brew --prefix)
+BREW=/usr/local
 
 # #get that damn path thingy set up nicely.
 export PATH=$BREW/opt/ruby/bin
