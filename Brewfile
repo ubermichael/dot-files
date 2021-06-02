@@ -94,6 +94,7 @@ install shellcheck
 install solr
 install ssh-copy-id
 install timidrobot/tap/cmc
+install tree
 install wget
 install yarn
 

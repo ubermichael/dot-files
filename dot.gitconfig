@@ -4,8 +4,38 @@
 email = ubermichael@gmail.com
 name = Michael Joyce
 
+[alias]
+alias = !git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' | sed -e 's/\\ /=/'
+branches = branch -a
+ci = commit
+co = checkout
+maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
+remotes = remote -v
+st = status -s
+stashes = "!git --no-pager stash list"
+tags = tag -l
+undo = reset --soft HEAD~1
+up = !git pull && git submodule foreach git checkout main && git submodule foreach git pull
+upup = !git pull upstream main
+l = log --pretty=oneline -n 20 --graph --abbrev-commit
+amend = commit --amend --reuse-message=HEAD
+
+# Find commits by source code
+fs = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+# Find commits by commit message
+fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+# Show the user email for the current repository.
+whoami = config user.email
+
+[apply]
+
+# Detect whitespace errors when applying a patch.
+whitespace = fix
+
 [core]
-editor=/usr/bin/emacs
+editor=/usr/bin/emacs -nw
 excludesfile = ~/.gitignore_global
 fileMode = false
 preloadindex = true
@@ -14,29 +44,46 @@ trustctime = false
 whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
 whitespace=nowarn
 
+# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+precomposeunicode = false
+
+# Speed up commands involving untracked files such as `git status`.
+# https://git-scm.com/docs/git-update-index#_untracked_cache
+untrackedCache = true
+
 [diff]
 algorithm = minimal
+
+# Detect copies as well as renames.
+renames = copies
 
 [github]
 user = ubermichael
 
-[alias]
-alias = !git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' | sed -e 's/\\ /=/'
-branches = branch -a
-ci = commit
-co = checkout
-maint = !git reflog expire --expire-unreachable=now --all && git gc --aggressive --prune=now && git fsck --unreachable --full --no-reflogs --strict
-remotes = remote -v
-st = status
-stashes = "!git --no-pager stash list"
-tags = tag -l
-undo = reset --soft HEAD~1
-up = !git pull && git submodule foreach git checkout main && git submodule foreach git pull
-upup = !git pull upstream main
 
 [grep]
 lineNumber = true
 column = true
+
+[init]
+
+# Set the name of the default branch when creating new repositories
+defaultBranch = main
+
+[merge]
+
+# Include summaries of merged commits in newly created merge commit messages
+log = true
+
+[push]
+
+# https://git-scm.com/docs/git-config#git-config-pushdefault
+default = simple
+
+# Make `git push` push relevant annotated tags when pushing branches out.
+followTags = true
+
 
 [rebase]
 abbreviateCommands = true

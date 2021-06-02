@@ -21,7 +21,7 @@ git submodule foreach git pull
 php -d memory_limit=-1 /usr/local/bin/composer update
 
 # test it.
-./bin/phpunit
+./vendor/bin/phpunit
 
 # yarn upgrade.
 yarn upgrade

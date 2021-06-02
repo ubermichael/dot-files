@@ -1,0 +1,5 @@
+# Set a large scrollback buffer
+defscrollback 3200
+
+# Always start `screen` with UTF-8 enabled (`screen -U`)
+defutf8 on

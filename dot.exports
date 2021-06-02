@@ -32,11 +32,14 @@ export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # Make emacs the default editor
-export EDITOR="/usr/local/bin/emacs"
+export EDITOR="/usr/local/bin/emacs -nw"
 
 # Highlight section titles in manual pages
 # shellcheck disable=SC2155
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
 
 # Allow ! in commands
 export histchars=
@@ -46,7 +49,7 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=200000
 export HISTSIZE=200000
 export SAVEHIST=400000
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 
 # Make some commands not show up in history
 export HISTIGNORE="ls:ps:cd:cd -:pwd:exit:date"
@@ -57,7 +60,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # localizations
 export LC_ALL=en_US.UTF-8
-export LANG="en_CA"
+export LANG=en_US.UTF-8
 
 # make bash tab compeletion not suck.
 export FIGNORE=$FIGNORE:\~
