@@ -4,16 +4,18 @@
 .emacs.desktop.lock
 
 # OS cruft
+._*
 .DS_Store
-Desktop.ini
+.AppleDouble
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
 
 # don't version log files.
 *.log
 
-# Thumbnail cache files
-._*
+# Windows
 Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+Desktop.ini
+ehthumbs.db

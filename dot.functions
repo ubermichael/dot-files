@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function cmd_exists() {
+    command -v "$1" &> /dev/null
+}
+
 # set a JDK default.
 function setjdk() {
     if [ ! -f /usr/libexec/java_home ]; then
@@ -66,6 +70,7 @@ function tre() {
     tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;
 }
 
+# Create a .sql.bz2 file for each (non-system) database in mysql.
 function backupdbs () {
     MY_DUMPOPT=(--opt --dump-date --skip-extended-insert --order-by-primary)
     DATE=$(date "+%Y-%m-%d");
