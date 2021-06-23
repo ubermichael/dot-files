@@ -17,6 +17,9 @@ export PATH=$PATH:$HOME/bin
 # Shut up composer.
 export COMPOSER_DISABLE_XDEBUG_WARN=1
 
+# Tell brew where to install stuff.
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
+
 #command line
 case "$TERM" in
   "dumb")
