@@ -3,7 +3,8 @@
 BREW=/usr/local
 
 # #get that damn path thingy set up nicely.
-export PATH=$BREW/opt/ruby/bin
+export PATH=$HOME/bin
+export PATH=$PATH:$BREW/opt/ruby/bin
 export PATH=$PATH:$BREW/lib/ruby/gems/2.7.0/bin
 export PATH=$PATH:$BREW/bin
 export PATH=$PATH:$BREW/sbin
@@ -12,7 +13,6 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
 export PATH=$PATH:/usr/X11/bin
-export PATH=$PATH:$HOME/bin
 
 # Shut up composer.
 export COMPOSER_DISABLE_XDEBUG_WARN=1

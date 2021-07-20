@@ -133,7 +133,11 @@ function rdb () {
 
 function recrud() {
   for entity in "$@"; do
+    if [[ $entity =~ "\\" ]]; then
+      ./bin/console make:entity --regenerate "$entity"
+    else
       ./bin/console make:entity --regenerate App\\Entity\\"$entity"
+    fi
       ./bin/console nines:make:repo "$entity"
       ./bin/console nines:make:fixture "$entity"
       ./bin/console nines:make:crud "$entity"

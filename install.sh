@@ -21,6 +21,17 @@ for f in bin/*; do
   ln "$f" "$g"
 done
 
+mkdir -p "$HOME/Library/LaunchAgents"
+for f in LaunchAgents/*; do
+  g="$HOME"/Library/LaunchAgents/$(basename $f);
+  echo "ln $f $g"
+  if [[ "$simulate" == 1 ]]; then
+    continue
+  fi
+  rm -f "$g"
+  ln "$f" "$g"
+done
+
 for f in dot.*; do
     g="$HOME/${f/dot/}"
     echo "ln $f $g"
