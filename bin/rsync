@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Set path to the rsync binary
+RSYNC=/usr/bin/rsync
+
+# Look for these exclude files
+IGNORE_FILES=(~/.rsyncignore ~/.gitignore ./.rsyncignore ./.gitignore)
+
+EXCLUDE_FROM=""
+for f in "${IGNORE_FILES[@]}"; do
+  if [[ -e $f ]]; then
+    EXCLUDE_FROM="$EXCLUDE_FROM --exclude-from=$f "
+  fi
+done
+$RSYNC "$EXCLUDE_FROM" "$@"

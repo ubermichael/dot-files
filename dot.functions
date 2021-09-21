@@ -50,13 +50,6 @@ function fs() {
     fi;
 }
 
-function atomp () {
-  ATOM_TEMP="$(mktemp /tmp/atom.XXXX)"
-  cat > "$ATOM_TEMP"
-  atom --wait "$ATOM_TEMP"
-  rm "$ATOM_TEMP"
-}
-
 # Run `dig` and display the most useful info
 function digga() {
     dig +nocmd "$1" any +multiline +noall +answer;
@@ -79,7 +72,6 @@ camerausedby() {
 	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
 	echo -e "Recent camera uses:\n$usedby"
 }
-
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into

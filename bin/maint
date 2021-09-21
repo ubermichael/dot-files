@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+# run all periodic mantenance
 sudo periodic daily weekly monthly
+
+# delete time machien local snapshots
+sudo tmutil deletelocalsnapshots /

@@ -8,14 +8,14 @@
 cask_args appdir: "/Applications", "no-quarantine": true
 
 # brew taps.
+tap "dart-lang/dart"
+tap "eth-p/software"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-
-# other taps
 tap "sass/sass"
 tap "timidrobot/tap"
 
@@ -71,29 +71,37 @@ brew "php-cs-fixer", 'ignore-dependencies': true # must be after php.
 install ant@1.9
 install bash-completion
 install bat
+install bat-extras
 install clamav
+install cmc
 install coreutils
+install curl
+install curl-openssl
 install ffmpeg
+install flac
 install git
 install httpd
-install httpie
 install hub
 install imagemagick
+install jing-trang
 install jq
+install lame
 install lnav
-install lynx
 install mailhog
 install mariadb
 install maven
 install moreutils
+install openjdk@11
+install pandoc
 install pv
 install rename
 install ruby
+install sass
 install saxon
 install shellcheck
 install solr
+install sqlite
 install ssh-copy-id
-install timidrobot/tap/cmc
 install tree
 install wget
 install yarn
