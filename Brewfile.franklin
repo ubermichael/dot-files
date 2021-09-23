@@ -38,7 +38,7 @@ cask "lastpass"
 cask "microsoft-remote-desktop"
 
 cask "mpv"
-cask "mysqlworkbench"
+# cask "mysqlworkbench"
 cask "nvalt"
 
 cask "oxygen-xml-editor"
@@ -48,7 +48,6 @@ cask "pycharm"
 cask "shiftit"
 cask "skype"
 cask "slack"
-cask "smcfancontrol"
 
 cask "spotify"
 
@@ -58,7 +57,6 @@ cask "vlc"
 cask "webstorm"
 cask "whatsapp"
 cask "xscreensaver"
-cask "zoom"
 
 # ordered packages
 brew "php@7.4"
