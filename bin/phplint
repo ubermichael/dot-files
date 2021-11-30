@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+find src -name '*.php' | while read -r file; do
+  result=$(php -l "$file")
+  if [ "$result" != "No syntax errors detected in $file" ]; then
+    echo "$result"
+  fi
+done

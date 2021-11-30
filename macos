@@ -12,6 +12,11 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Increase the max open file limit in the most rediculous way possible
+sudo mkdir -p /Library/LaunchDaemons
+cp LaunchDaemons/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
+chown root:wheel /Library/LaunchDaemons/limit.maxfiles.plist
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -727,4 +732,11 @@ for app in "Activity Monitor" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done
+
+open -a Emacs ~/Desktop
+open -a Emacs ~/Library
+open -a Emacs ~/Downloads
+open -a Emacs ~/Sites
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
