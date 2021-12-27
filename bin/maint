@@ -7,6 +7,10 @@ if [[ -x $brew ]]; then
     $brew upgrade --greedy
     $brew cleanup -s
     $brew doctor
+
+    # hack
+    $brew remove --ignore-dependencies php
+    $brew link --force php@7.4
 else
     echo "$brew not found."
 fi
@@ -15,6 +19,7 @@ fi
 apm=/usr/local/bin/apm
 if [[ -x $apm ]]; then
     $apm upgrade -c false
+    $apm clean
 else
     echo "$apm not found."
 fi
@@ -31,8 +36,17 @@ fi
 composer=/usr/local/bin/composer
 if [[ -x $composer ]]; then
     $composer global update
+    $composer global clear-cache
 else
     echo "$composer not found."
+fi
+
+# update the symfony binary - it isn't managed by brew
+symfony=/usr/local/bin/symfony
+if [[ -x $symfony ]]; then
+    $symfony self:update -q
+else
+    echo "$symfony not found."
 fi
 
 # run all periodic mantenance
