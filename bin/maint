@@ -1,5 +1,40 @@
 #!/usr/bin/env bash
 
+# Update homebrew and the installed packages
+brew=/usr/local/bin/brew
+if [[ -x $brew ]]; then
+    $brew update --quiet
+    $brew upgrade --greedy
+    $brew cleanup -s
+    $brew doctor
+else
+    echo "$brew not found."
+fi
+
+# Atom packages to update - brew updates atom
+apm=/usr/local/bin/apm
+if [[ -x $apm ]]; then
+    $apm upgrade -c false
+else
+    echo "$apm not found."
+fi
+
+# NPM update packages - brew updates npm.
+npm=/usr/local/bin/npm
+if [[ -x $npm ]]; then
+    $npm update -g
+else
+    echo "$npm not found.";
+fi
+
+# update global composer packages - brew updates composer
+composer=/usr/local/bin/composer
+if [[ -x $composer ]]; then
+    $composer global update
+else
+    echo "$composer not found."
+fi
+
 # run all periodic mantenance
 sudo periodic daily weekly monthly
 

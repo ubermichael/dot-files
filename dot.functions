@@ -146,39 +146,6 @@ function recrud() {
   done
 }
 
-function brewup() {
-    brew=/usr/local/bin/brew
-    if [[ -x $brew ]]; then
-        $brew update --quiet
-        $brew upgrade --greedy
-        $brew cleanup -s
-        $brew doctor
-    else
-        echo "$brew not found."
-    fi
-
-    apm=/usr/local/bin/apm
-    if [[ -x $apm ]]; then
-        $apm upgrade -c false
-    else
-        echo "$apm not found."
-    fi
-
-    npm=/usr/local/bin/npm
-    if [[ -x $npm ]]; then
-        $npm update -g
-    else
-        echo "$npm not found.";
-    fi
-
-    composer=/usr/local/bin/composer
-    if [[ -x $composer ]]; then
-        $composer global update
-    else
-        echo "$composer not found."
-    fi
-}
-
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
