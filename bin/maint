@@ -49,7 +49,7 @@ fi
 # update the symfony binary - it isn't managed by brew
 symfony=/usr/local/bin/symfony
 if [[ -x $symfony ]]; then
-    $symfony self:update -q
+    $symfony --quiet self:update --yes
 else
     echo "$symfony not found."
 fi
