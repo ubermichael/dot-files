@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BREW=/usr/local
+BREW=/opt/homebrew
 
 # #get that damn path thingy set up nicely.
 export PATH=$HOME/bin
