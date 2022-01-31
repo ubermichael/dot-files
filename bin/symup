@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+BREW=$(brew --prefix)
+
 if [[ $(git st --porcelain --untracked-files=no) ]]; then
     echo "Modified files in the tree. Cannot continue."
     git st --porcelain --untracked-files=no
@@ -18,7 +20,7 @@ git submodule foreach git pull
 
 # get the symfony et al. updates.
 # composer is a memory hog.
-php -d memory_limit=-1 /usr/local/bin/composer update
+php -d memory_limit=-1 $BREW/bin/composer update
 
 # test it.
 ./vendor/bin/phpunit
@@ -35,8 +37,8 @@ git push
 echo "security check."
 symfony security:check --quiet
 
-echo "format check"
-php-cs-fixer fix --diff --dry-run
+echo "format check - skipped"
+# php-cs-fixer fix --diff --dry-run
 
 echo "config lint"
 ./bin/console lint:yaml --quiet config --parse-tags
@@ -61,5 +63,6 @@ echo "deployment"
 dep deploy dhil
 
 # and create a pull request.
-echo "pull request"
-hub pull-request -o -m "Composer update." -m "Update symfony and dependencies via composer" -b "$branch"
+project=${PWD##*/}
+echo "pull request for sfu-dhil/$project"
+gh pr create -t 'Composer update' -b 'Update symfony and dependencies' -R "sfu-dhil/$project"

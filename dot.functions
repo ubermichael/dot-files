@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BREW=$(brew --prefix)
+
 function cmd_exists() {
     command -v "$1" &> /dev/null
 }
@@ -27,7 +29,7 @@ function removeFromPath() {
 }
 
 function composer() {
-    phar=/usr/local/bin/composer
+    phar=$BREW/bin/composer
 
     if [ -e composer.phar ]; then
         phar=composer.phar

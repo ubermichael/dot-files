@@ -102,7 +102,3 @@ brew "tree"
 brew "wget"
 brew "yarn"
 
-# pip3 install Sphinx
-# npm install --global bower yarn
-# curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
-# chmod a+x /usr/local/bin/symfony
