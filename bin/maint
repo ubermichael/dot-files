@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+PFX=$(brew --prefix)
+
 # Update homebrew and the installed packages
-brew=/usr/local/bin/brew
+brew=$PFX/bin/brew
 if [[ -x $brew ]]; then
     export HOMEBREW_BAT=1
     export HOMEBREW_NO_ANALYTICS=1
@@ -14,14 +22,14 @@ if [[ -x $brew ]]; then
     $brew doctor
 
     # hack
-    $brew remove --ignore-dependencies php
+    $brew remove --ignore-dependencies php@8.0
     $brew link --force php@7.4
 else
     echo "$brew not found."
 fi
 
 # Atom packages to update - brew updates atom
-apm=/usr/local/bin/apm
+apm=$PFX/bin/apm
 if [[ -x $apm ]]; then
     $apm upgrade -c false
     $apm clean
@@ -30,7 +38,7 @@ else
 fi
 
 # NPM update packages - brew updates npm.
-npm=/usr/local/bin/npm
+npm=$PFX/bin/npm
 if [[ -x $npm ]]; then
     $npm update -g
 else
@@ -38,7 +46,7 @@ else
 fi
 
 # update global composer packages - brew updates composer
-composer=/usr/local/bin/composer
+composer=$PFX/bin/composer
 if [[ -x $composer ]]; then
     $composer global update
     $composer global clear-cache
@@ -47,7 +55,7 @@ else
 fi
 
 # update the symfony binary - it isn't managed by brew
-symfony=/usr/local/bin/symfony
+symfony=$PFX/bin/symfony
 if [[ -x $symfony ]]; then
     $symfony --quiet self:update --yes
 else

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BREW=/usr/local
+BREW=/opt/homebrew
 
 # #get that damn path thingy set up nicely.
 export PATH=$HOME/bin
@@ -13,6 +13,7 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
 export PATH=$PATH:/usr/X11/bin
+export PATH=$PATH:/usr/local/bin
 
 # Shut up composer.
 export COMPOSER_DISABLE_XDEBUG_WARN=1
@@ -35,7 +36,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # Make emacs the default editor
-export EDITOR="/usr/local/bin/emacs -nw"
+export EDITOR="$BREW/bin/emacs -nw"
 
 # Highlight section titles in manual pages
 # shellcheck disable=SC2155
@@ -72,7 +73,7 @@ export FIGNORE=$FIGNORE:.git
 export GREP_OPTIONS='--color=auto --exclude-dir=.git'
 
 # make vc not suck.
-export GIT_EDITOR=/usr/local/bin/emacs
+export GIT_EDITOR=$BREW/bin/emacs
 
 # Make less a bit nicer. -R color codes.
 export LESS="-R"
