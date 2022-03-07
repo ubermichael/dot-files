@@ -23,7 +23,11 @@ git submodule foreach git pull
 php -d memory_limit=-1 $BREW/bin/composer update
 
 # test it.
-./vendor/bin/phpunit
+if [[ -e Makefile ]]; then
+    make test
+else
+    ./vendor/bin/phpunit
+fi
 
 # yarn upgrade.
 yarn upgrade
@@ -65,4 +69,4 @@ dep deploy dhil
 # and create a pull request.
 project=${PWD##*/}
 echo "pull request for sfu-dhil/$project"
-gh pr create -t 'Composer update' -b 'Update symfony and dependencies' -R "sfu-dhil/$project"
+hub pull-request -m 'Composer update' -m 'Update symfony and dependencies' -b main
