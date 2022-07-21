@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s extglob
+OLD_IFS=$IFS
+IFS=
+
+while read -r line || [[ "$line" ]]; do
+    echo "${line//$'\e'[\[(]*([0-9;])[@-n]/}"
+done
+
+IFS=$OLD_IFS

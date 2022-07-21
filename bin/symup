@@ -4,7 +4,7 @@ set -euo pipefail
 
 BREW=$(brew --prefix)
 
-if [[ $(git st --porcelain --untracked-files=no) ]]; then
+if [[ $(git status --porcelain --untracked-files=no) ]]; then
     echo "Modified files in the tree. Cannot continue."
     git st --porcelain --untracked-files=no
     exit
@@ -22,15 +22,19 @@ git submodule foreach git pull
 # composer is a memory hog.
 php -d memory_limit=-1 $BREW/bin/composer update
 
+echo "composer checks"
+composer --quiet validate
+composer show -Do
+
+# yarn upgrade.
+yarn upgrade
+
 # test it.
 if [[ -e Makefile ]]; then
     make test
 else
     ./vendor/bin/phpunit
 fi
-
-# yarn upgrade.
-yarn upgrade
 
 # commit & push. Allow the commands to fail if the composer update did nothing.
 git commit -am "composer update." || true
@@ -54,13 +58,7 @@ echo "container lint"
 ./bin/console lint:container --quiet
 
 echo "schema check"
-./bin/console doctrine:schema:validate -q -n --skip-sync
-
-echo "composer check"
-composer --quiet validate
-
-echo "dependency check"
-composer show -Do
+./bin/console doctrine:schema:validate -q -n
 
 # deploy it.
 echo "deployment"
