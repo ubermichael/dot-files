@@ -71,3 +71,4 @@ if compgen -G "$HOME/.ssh/id_rsa*" > /dev/null; then
     fi
 fi
 
+gpgconf --launch gpg-agent

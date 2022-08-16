@@ -21,6 +21,9 @@ export COMPOSER_DISABLE_XDEBUG_WARN=1
 # Tell brew where to install stuff.
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
 
+# GPG things for signing git commits
+export GPG_TTY=$(tty)
+
 #command line
 case "$TERM" in
   "dumb")
