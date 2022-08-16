@@ -1,13 +1,15 @@
 #!/bin/bash
 
-BREW=/opt/homebrew
-
 # #get that damn path thingy set up nicely.
 export PATH=$HOME/bin
-export PATH=$PATH:$BREW/opt/ruby/bin
-export PATH=$PATH:$BREW/lib/ruby/gems/2.7.0/bin
-export PATH=$PATH:$BREW/bin
-export PATH=$PATH:$BREW/sbin
+export PATH=$PATH:/opt/homebrew/opt/ruby/bin
+export PATH=$PATH:/opt/homebrew/lib/ruby/gems/2.7.0/bin
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/sbin
+export PATH=$PATH:/usr/local/opt/ruby/bin
+export PATH=$PATH:/usr/local/lib/ruby/gems/2.7.0/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
@@ -39,7 +41,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # Make emacs the default editor
-export EDITOR="$BREW/bin/emacs -nw"
+export EDITOR="emacs -nw"
 
 # Highlight section titles in manual pages
 # shellcheck disable=SC2155
@@ -76,7 +78,7 @@ export FIGNORE=$FIGNORE:.git
 export GREP_OPTIONS='--color=auto --exclude-dir=.git'
 
 # make vc not suck.
-export GIT_EDITOR=$BREW/bin/emacs
+export GIT_EDITOR=emacs
 
 # Make less a bit nicer. -R color codes.
 export LESS="-R"
