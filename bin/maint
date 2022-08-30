@@ -14,10 +14,6 @@ if [[ -x $brew ]]; then
     $brew upgrade --quiet --greedy
     $brew cleanup --quiet -s
     $brew doctor
-
-    # hack
-    $brew remove --ignore-dependencies php@8.0
-    $brew link --force php@7.4
 else
     echo "$brew not found."
 fi
