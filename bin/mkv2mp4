@@ -24,8 +24,9 @@ threads=0
 #  ------------------------------------- 
 
 in_file=$1;
+# This should probably be outfile=${in_file%.*}
 outfile=`echo "$in_file" | sed -e 's/\.[a-zA-Z0-9]*$//'`
-outfile=$outfile.$format
+outfile=$outfile.rescaled.$format
 
 #  ------------------------------------- 
 

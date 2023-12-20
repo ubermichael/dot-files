@@ -11,7 +11,16 @@ if [[ -x $brew ]]; then
     export HOMEBREW_NO_ENV_HINTS=1
 
     $brew update --quiet
+
+    # Backup the dock config
+    defaults export com.apple.dock "/tmp/dock.config"
+    
     $brew upgrade --quiet --greedy
+
+    # Restore dock config. The upgrade may have removed icons from the dock.
+    defaults import com.apple.dock "/tmp/dock.config"
+    killall Dock
+    
     $brew cleanup --quiet -s
     $brew doctor
 else
