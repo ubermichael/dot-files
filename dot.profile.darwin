@@ -17,7 +17,42 @@ alias md5sum="md5"
 alias sha1sum="shasum"
 alias badge="tput bel"
 
+# macOS has no `md5sum`, so use `md5` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+
+# macOS has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Disable Spotlight
+alias spotoff="sudo mdutil -a -i off"
+# Enable Spotlight
+alias spoton="sudo mdutil -a -i on"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+# Flush Directory Service cache
+alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+export PATH=$PATH:/opt/homebrew/opt/ruby/bin
+export PATH=$PATH:/opt/homebrew/lib/ruby/gems/2.7.0/bin
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/sbin
+
+# Tell brew where to install stuff.
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
+
+# For compilers to find ruby
+export LDFLAGS="-L${BREW}/opt/ruby/lib"
+export CPPFLAGS="-I${BREW}/opt/ruby/include"
+
+# For pkg-config to find ruby
+export PKG_CONFIG_PATH="${BREW}/opt/ruby/lib/pkgconfig"
+
+# Make OS X shut up
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 if [ -r $BREW/etc/profile.d/bash_completion.sh ]; then
     # shellcheck disable=SC1091
@@ -28,3 +63,28 @@ function alert() {
     script="display alert \"Term\" message \"$1\""
     osascript -e "$script"
 }
+
+# set a JDK default.
+function setjdk() {
+    if [ ! -f /usr/libexec/java_home ]; then
+  	return
+    fi
+
+    if [ $# -ne 0 ]; then
+        removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+        if [ -n "${JAVA_HOME+x}" ]; then
+            removeFromPath "$JAVA_HOME"
+        fi
+        # shellcheck disable=SC2068,SC2155
+        export JAVA_HOME=$(/usr/libexec/java_home -v $@)
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
+}
+
+# who is using the laptop's iSight camera?
+camerausedby() {
+	echo "Checking to see who is using the iSight camera… 📷"
+	usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
+	echo -e "Recent camera uses:\n$usedby"
+}
+

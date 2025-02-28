@@ -2,10 +2,6 @@
 
 # #get that damn path thingy set up nicely.
 export PATH=$HOME/bin
-export PATH=$PATH:/opt/homebrew/opt/ruby/bin
-export PATH=$PATH:/opt/homebrew/lib/ruby/gems/2.7.0/bin
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:/opt/homebrew/sbin
 export PATH=$PATH:/usr/local/opt/ruby/bin
 export PATH=$PATH:/usr/local/lib/ruby/gems/2.7.0/bin
 export PATH=$PATH:/usr/local/bin
@@ -19,9 +15,6 @@ export PATH=$PATH:/usr/local/bin
 
 # Shut up composer.
 export COMPOSER_DISABLE_XDEBUG_WARN=1
-
-# Tell brew where to install stuff.
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
 
 # GPG things for signing git commits
 export GPG_TTY=$(tty)
@@ -86,12 +79,3 @@ export LESS="-R"
 # Make rsync a little better.
 export RSYNC_RSH=ssh
 
-# For compilers to find ruby
-export LDFLAGS="-L${BREW}/opt/ruby/lib"
-export CPPFLAGS="-I${BREW}/opt/ruby/include"
-
-# For pkg-config to find ruby
-export PKG_CONFIG_PATH="${BREW}/opt/ruby/lib/pkgconfig"
-
-# Make OS X shut up
-export BASH_SILENCE_DEPRECATION_WARNING=1
