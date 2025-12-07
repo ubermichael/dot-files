@@ -8,18 +8,6 @@
 cask_args appdir: "/Applications", "no-quarantine": true
 
 # brew taps.
-## bat-extras
-tap "eth-p/software"
-## brew bundling
-tap "homebrew/bundle"
-## Apps
-tap "homebrew/cask"
-## Fonts
-tap "homebrew/cask-fonts"
-## brew services
-tap "homebrew/services"
-## Symfony
-tap "symfony-cli/tap"
 ## cmc
 tap "timidrobot/tap"
 
