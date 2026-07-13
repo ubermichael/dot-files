@@ -1,6 +1,7 @@
 #!/bin/sh 
 
 export PAGER=less
-export EDITOR='/usr/bin/emacs -nw '
+export EDITOR='code --new-window --wait'
+export GIT_EDITOR='code --new-window --wait'
 
 export PATH=$PATH:$ORIGINAL_PATH

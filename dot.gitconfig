@@ -34,7 +34,7 @@ whoami = config user.email
 whitespace = fix
 
 [core]
-editor=/usr/bin/emacs -nw
+editor=code
 excludesfile = ~/.gitignore_global
 fileMode = false
 preloadindex = true
