@@ -27,13 +27,12 @@ else
     echo "$brew not found."
 fi
 
-# Atom packages to update - brew updates atom
-apm=$PFX/bin/apm
-if [[ -x $apm ]]; then
-    $apm upgrade -c false
-    $apm clean
+ppm=$PFX/bin/ppm
+if [[ -x $ppm ]]; then
+    $ppm upgrade -c false
+    $ppm clean
 else
-    echo "$apm not found."
+    echo "$ppm not found."
 fi
 
 # NPM update packages - brew updates npm.
@@ -60,9 +59,6 @@ if [[ -x $symfony ]]; then
 else
     echo "$symfony not found."
 fi
-
-# run all periodic mantenance
-sudo periodic daily weekly monthly
 
 # delete time machien local snapshots
 sudo tmutil deletelocalsnapshots /
