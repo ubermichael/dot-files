@@ -5,3 +5,7 @@ export EDITOR='code --new-window --wait'
 export GIT_EDITOR='code --new-window --wait'
 
 export PATH=$PATH:$ORIGINAL_PATH
+
+function stree() {
+    sourcetree -f "$(cygpath -w "${1:-$PWD}")"
+}
